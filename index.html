@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In the Room with Legacy™ — The Family Operating System</title>
+  <meta name="description" content="IRL builds the operating systems that help mission-oriented families govern, grow, and pass it on — while everyone is still here.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">In the Room with Legacy™</a>
+
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul class="nav-links" id="desktop-nav">
+      <li><a href="#advisors">IRL Advisors</a></li>
+      <li><a href="#program">While We're Still Here™</a></li>
+      <li><a href="#origin">About</a></li>
+      <li><a href="#snapshot" class="nav-cta-link">Legacy Snapshot</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="nav-mobile-overlay" id="mobile-menu">
+    <a href="#advisors" onclick="closeMobile()">IRL Advisors</a>
+    <a href="#program"  onclick="closeMobile()">While We're Still Here™</a>
+    <a href="#origin"   onclick="closeMobile()">About</a>
+    <a href="#snapshot" onclick="closeMobile()" class="mobile-cta">Legacy Snapshot →</a>
+  </div>
+
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-bg-layer"></div>
+
+    <!-- SVG grain texture -->
+    <div class="hero-grain" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <filter id="grain-filter" x="0%" y="0%" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" result="noise"/>
+          <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+          <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended"/>
+          <feComponentTransfer in="blended">
+            <feFuncA type="linear" slope="0.055"/>
+          </feComponentTransfer>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain-filter)" fill="white"/>
+      </svg>
+    </div>
+
+    <div class="hero-vignette"></div>
+    <div class="hero-orb"></div>
+
+    <div class="hero-content">
+      <p class="eyebrow hero-eyebrow">In the Room with Legacy™ — Family Infrastructure</p>
+
+      <h1 class="hero-headline">
+        The family is the<br>first institution.<br>
+        <em>It's time we ran it like one.</em>
+      </h1>
+
+      <p class="hero-sub">
+        IRL builds the operating systems that help mission-oriented families govern, grow, and pass it on — while everyone is still here.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="btn btn-clay">
+          Take the Legacy Snapshot
+        </a>
+        <a href="#problem" class="btn btn-ghost-light">
+          Learn More
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- ─── PROBLEM STATEMENT ─────────────────────────────────── -->
+  <section id="problem">
+    <div class="problem-inner">
+
+      <div class="problem-left">
+        <p class="eyebrow reveal">The Problem</p>
+        <h2 class="reveal reveal-delay-1">Most families have love.<br>Few have systems.</h2>
+        <p class="problem-body reveal reveal-delay-2">
+          Black families lose an estimated $1 trillion in wealth between generations — not from lack of love, but from lack of structure. No shared values document. No governance framework. No succession plan. No regular convening. Just hope.
+        </p>
+        <div class="stat-row reveal reveal-delay-3">
+          <div class="stat-box">
+            <div class="num">$1T</div>
+            <div class="lbl">Estimated lost between generations in Black family wealth</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">70%</div>
+            <div class="lbl">Of family businesses fail by the second generation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-right reveal reveal-delay-2">
+        <blockquote>
+          "Families are the first institutions within civilization. IRL builds the infrastructure they never had."
+        </blockquote>
+        <cite>— The IRL Thesis</cite>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── THREE DOORS ───────────────────────────────────────── -->
+  <section id="doors">
+    <div class="section-head reveal">
+      <p class="eyebrow">Where Do You Begin?</p>
+      <h2>Find your door into IRL</h2>
+    </div>
+
+    <div class="doors-grid">
+
+      <!-- Card 1: Families -->
+      <div class="door-card card-clay reveal">
+        <span class="door-bg-num">01</span>
+        <span class="door-num">01 —</span>
+        <p class="door-eyebrow">For Families</p>
+        <h3>Start with the Legacy Snapshot</h3>
+        <p class="door-desc">A free diagnostic that reveals exactly where your family has infrastructure — and where the gaps are. Takes about 15 minutes.</p>
+        <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="door-link">
+          Take the Snapshot →
+        </a>
+      </div>
+
+      <!-- Card 2: Institutions -->
+      <div class="door-card card-dusk reveal reveal-delay-1" id="advisors">
+        <span class="door-bg-num">02</span>
+        <span class="door-num">02 —</span>
+        <p class="door-eyebrow">For Institutions</p>
+        <h3>Work with IRL Advisors</h3>
+        <p class="door-desc">Advisory services for wealth managers, foundations, and institutions that serve mission-oriented families. Embed IRL into your client relationships.</p>
+        <a href="#advisors" class="door-link">
+          Explore Advisory →
+        </a>
+      </div>
+
+      <!-- Card 3: Funders -->
+      <div class="door-card card-stone reveal reveal-delay-2">
+        <span class="door-bg-num">03</span>
+        <span class="door-num">03 —</span>
+        <p class="door-eyebrow">For Funders</p>
+        <h3>While We're Still Here™</h3>
+        <p class="door-desc">Our nonprofit arm — bringing family governance tools to communities historically locked out of legacy planning infrastructure.</p>
+        <a href="#program" class="door-link">
+          Learn About WWSH →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── ORIGIN STORY ──────────────────────────────────────── -->
+  <section id="origin">
+    <div class="origin-inner">
+
+      <div class="origin-photo-wrap reveal">
+        <div class="origin-photo">
+          <!-- Replace this div with: <img src="lauren-photo.jpg" alt="Lauren Miller"> -->
+          <span class="origin-photo-label">Founder photo</span>
+        </div>
+      </div>
+
+      <div class="origin-text">
+        <p class="eyebrow reveal">Our Story</p>
+        <h2 class="reveal reveal-delay-1">
+          Built from the moment every family knows — but rarely prepares for.
+        </h2>
+        <p class="origin-body reveal reveal-delay-2">
+          IRL was born from a moment most families know but rarely prepare for — when someone who holds the story gets sick, and the silence between generations becomes impossible to ignore.
+        </p>
+        <p class="origin-body reveal reveal-delay-3">
+          Lauren Miller built IRL so no family has to scramble for what should have already been in place. Not as a response to grief. As a living practice — while everyone is still here.
+        </p>
+        <a href="#" class="origin-link reveal reveal-delay-4">
+          Read Lauren's Story
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── LEGACY SNAPSHOT FEATURE ──────────────────────────── -->
+  <section id="snapshot">
+    <div class="snapshot-watermark" aria-hidden="true">IRL</div>
+
+    <div class="snapshot-inner">
+      <p class="eyebrow reveal">The Free Diagnostic</p>
+      <h2 class="reveal reveal-delay-1">
+        Where does your family's<br>operating system stand?
+      </h2>
+      <p class="snapshot-sub reveal reveal-delay-2">
+        The Legacy Snapshot is a free diagnostic that shows you exactly where your family has infrastructure — and where the gaps are. In about 15 minutes, you'll know more than most families ever discover.
+      </p>
+
+      <div class="snapshot-checks reveal reveal-delay-3">
+        <div class="check-item"><div class="check-icon">✓</div> Takes 15 minutes</div>
+        <div class="check-item"><div class="check-icon">✓</div> Free &amp; confidential</div>
+        <div class="check-item"><div class="check-icon">✓</div> Personalized results</div>
+        <div class="check-item"><div class="check-icon">✓</div> No sales pitch</div>
+      </div>
+
+      <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener"
+         class="btn btn-clay reveal reveal-delay-4"
+         style="font-size: 1rem; padding: 1rem 2.5rem;">
+        Take the Free Snapshot
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ─── PROGRAM PREVIEW — While We're Still Here™ ─────────── -->
+  <section id="program">
+    <div class="program-inner">
+
+      <div class="program-head reveal">
+        <p class="eyebrow">While We're Still Here™</p>
+        <h2>Five phases. One living legacy.</h2>
+      </div>
+      <p class="program-desc reveal reveal-delay-1">
+        A structured journey from family conversation to family infrastructure. Each phase builds the next — together, they form your family's operating system.
+      </p>
+
+      <div class="phases-track">
+        <div class="phase reveal">
+          <div class="phase-marker"><span class="phase-roman">I</span></div>
+          <div class="phase-name">Gather</div>
+          <div class="phase-desc">Bring the family into the room — physically or virtually. Set the table for honest conversation.</div>
+        </div>
+        <div class="phase reveal reveal-delay-1">
+          <div class="phase-marker"><span class="phase-roman">II</span></div>
+          <div class="phase-name">Share</div>
+          <div class="phase-desc">Surface the stories, values, and wisdom that live in people — not documents.</div>
+        </div>
+        <div class="phase reveal reveal-delay-2">
+          <div class="phase-marker"><span class="phase-roman">III</span></div>
+          <div class="phase-name">Align</div>
+          <div class="phase-desc">Build shared agreements: values, vision, governance, and decision-making norms.</div>
+        </div>
+        <div class="phase reveal reveal-delay-3">
+          <div class="phase-marker"><span class="phase-roman">IV</span></div>
+          <div class="phase-name">Preserve</div>
+          <div class="phase-desc">Document what matters. Create the artifacts and archives your family deserves.</div>
+        </div>
+        <div class="phase reveal reveal-delay-4">
+          <div class="phase-marker"><span class="phase-roman">V</span></div>
+          <div class="phase-name">Integrate</div>
+          <div class="phase-desc">Make legacy a living practice — recurring rituals, roles, and review cycles.</div>
+        </div>
+      </div>
+
+      <div class="program-footer reveal">
+        <a href="#" class="btn btn-ghost-light">Learn About the Program →</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── NEWSLETTER ────────────────────────────────────────── -->
+  <section id="newsletter">
+    <div class="newsletter-inner">
+      <p class="eyebrow reveal">Stay in the Room</p>
+      <h2 class="reveal reveal-delay-1">Join the IRL Community</h2>
+      <p class="newsletter-body reveal reveal-delay-2">
+        Perspectives on family governance, generational wealth, and the work of building legacy — delivered to your inbox. Thoughtful, infrequent, and always worth opening.
+      </p>
+      <form class="nl-form reveal reveal-delay-3" onsubmit="handleNewsletter(event)">
+        <input type="email" class="nl-input" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit" class="btn btn-clay">Join the List</button>
+      </form>
+      <p class="nl-note reveal reveal-delay-4">We respect your inbox. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="#" class="footer-brand-logo">In the Room with Legacy™</a>
+        <p class="footer-tagline">"The family is the first institution."</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X / Twitter">X</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-head">Platform</p>
+        <ul>
+          <li><a href="#snapshot">Legacy Snapshot</a></li>
+          <li><a href="#">Family OS Framework</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#newsletter">Community</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-head">Advisory</p>
+        <ul>
+          <li><a href="#advisors">IRL Advisors</a></li>
+          <li><a href="#">For Wealth Managers</a></li>
+          <li><a href="#">For Foundations</a></li>
+          <li><a href="#">Partner with IRL</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-head">Nonprofit</p>
+        <ul>
+          <li><a href="#program">While We're Still Here™</a></li>
+          <li><a href="#origin">Our Mission</a></li>
+          <li><a href="#">Donate</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 In the Room with Legacy Inc. All rights reserved.</p>
+      <p class="footer-ein">
+        EIN 99-4135483<br>
+        While We're Still Here™ is a registered nonprofit initiative
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    /* ── Sticky Nav ─────────────────────────────────────────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    /* ── Mobile Menu ─────────────────────────────────────────── */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function openMobile() {
+      hamburger.classList.add('active');
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobile() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.contains('open') ? closeMobile() : openMobile();
+    });
+    hamburger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        mobileMenu.classList.contains('open') ? closeMobile() : openMobile();
+      }
+    });
+
+    /* ── Scroll Reveal ───────────────────────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ── Newsletter Submit ───────────────────────────────────── */
+    function handleNewsletter(e) {
+      e.preventDefault();
+      // Update YOUR_KIT_PAGE with your Kit.com landing page slug
+      window.open('https://app.kit.com/landing-pages/YOUR_KIT_PAGE', '_blank', 'noopener');
+      e.target.innerHTML =
+        '<p style="font-family:\'Cormorant Garamond\',serif; font-size:1.25rem; font-style:italic; color:var(--clay);">' +
+        'You\'re in. Welcome to the room. ✦' +
+        '</p>';
+    }
+  </script>
+
+</body>
+</html>
