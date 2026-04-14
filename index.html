@@ -25,10 +25,12 @@
     </div>
 
     <ul class="nav-links" id="desktop-nav">
-      <li><a href="#advisors">IRL Advisors</a></li>
-      <li><a href="#program">While We're Still Here™</a></li>
-      <li><a href="#origin">About</a></li>
-      <li><a href="#snapshot" class="nav-cta-link">Legacy Snapshot</a></li>
+      <li><a href="javascript:void(0)">About <span class="nav-arrow">&#8964;</span></a></li>
+      <li><a href="javascript:void(0)">Programs <span class="nav-arrow">&#8964;</span></a></li>
+      <li><a href="javascript:void(0)">Tools & Resources <span class="nav-arrow">&#8964;</span></a></li>
+      <li><a href="javascript:void(0)">IRL Advisors <span class="nav-arrow">&#8964;</span></a></li>
+      <li><a href="javascript:void(0)">Contact</a></li>
+      <li><a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="nav-cta-link">Take Your Legacy Snapshot</a></li>
     </ul>
   </nav>
 
@@ -94,6 +96,10 @@
 
   <!-- ─── PROBLEM STATEMENT ─────────────────────────────────── -->
   <section id="problem">
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-indicator-line"></div>
+      <span>Scroll</span>
+    </div>
     <div class="problem-inner">
 
       <div class="problem-left">
@@ -127,6 +133,10 @@
 
   <!-- ─── THREE DOORS ───────────────────────────────────────── -->
   <section id="doors">
+    <div class="scroll-indicator scroll-indicator--dark" aria-hidden="true">
+      <div class="scroll-indicator-line"></div>
+      <span>Scroll</span>
+    </div>
     <div class="section-head reveal">
       <p class="eyebrow">Where Do You Begin?</p>
       <h2>Find your door into IRL</h2>
@@ -176,6 +186,10 @@
 
   <!-- ─── ORIGIN STORY ──────────────────────────────────────── -->
   <section id="origin">
+    <div class="scroll-indicator scroll-indicator--dark" aria-hidden="true">
+      <div class="scroll-indicator-line"></div>
+      <span>Scroll</span>
+    </div>
     <div class="origin-inner">
 
       <div class="origin-photo-wrap reveal">
@@ -207,6 +221,10 @@
 
   <!-- ─── LEGACY SNAPSHOT FEATURE ──────────────────────────── -->
   <section id="snapshot">
+    <div class="scroll-indicator scroll-indicator--dark" aria-hidden="true">
+      <div class="scroll-indicator-line"></div>
+      <span>Scroll</span>
+    </div>
     <div class="snapshot-watermark" aria-hidden="true">IRL</div>
 
     <div class="snapshot-inner">
@@ -236,45 +254,49 @@
 
   <!-- ─── PROGRAM PREVIEW — While We're Still Here™ ─────────── -->
   <section id="program">
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-indicator-line"></div>
+      <span>Scroll</span>
+    </div>
     <div class="program-inner">
 
-      <div class="program-head reveal">
+      <div class="program-head prog-animate" data-delay="0">
         <p class="eyebrow">While We're Still Here™</p>
         <h2>Five phases. One living legacy.</h2>
       </div>
-      <p class="program-desc reveal reveal-delay-1">
+      <p class="program-desc prog-animate" data-delay="100">
         A structured journey from family conversation to family infrastructure. Each phase builds the next — together, they form your family's operating system.
       </p>
 
       <div class="phases-track">
-        <div class="phase reveal">
+        <div class="phase prog-animate" data-delay="150">
           <div class="phase-marker"><span class="phase-roman">I</span></div>
           <div class="phase-name">Gather</div>
           <div class="phase-desc">Bring the family into the room — physically or virtually. Set the table for honest conversation.</div>
         </div>
-        <div class="phase reveal reveal-delay-1">
+        <div class="phase prog-animate" data-delay="250">
           <div class="phase-marker"><span class="phase-roman">II</span></div>
           <div class="phase-name">Share</div>
           <div class="phase-desc">Surface the stories, values, and wisdom that live in people — not documents.</div>
         </div>
-        <div class="phase reveal reveal-delay-2">
+        <div class="phase prog-animate" data-delay="350">
           <div class="phase-marker"><span class="phase-roman">III</span></div>
           <div class="phase-name">Align</div>
           <div class="phase-desc">Build shared agreements: values, vision, governance, and decision-making norms.</div>
         </div>
-        <div class="phase reveal reveal-delay-3">
+        <div class="phase prog-animate" data-delay="450">
           <div class="phase-marker"><span class="phase-roman">IV</span></div>
           <div class="phase-name">Preserve</div>
           <div class="phase-desc">Document what matters. Create the artifacts and archives your family deserves.</div>
         </div>
-        <div class="phase reveal reveal-delay-4">
+        <div class="phase prog-animate" data-delay="550">
           <div class="phase-marker"><span class="phase-roman">V</span></div>
           <div class="phase-name">Integrate</div>
           <div class="phase-desc">Make legacy a living practice — recurring rituals, roles, and review cycles.</div>
         </div>
       </div>
 
-      <div class="program-footer reveal">
+      <div class="program-footer prog-animate" data-delay="650">
         <a href="#" class="btn btn-ghost-light">Learn About the Program →</a>
       </div>
 
@@ -284,6 +306,10 @@
 
   <!-- ─── NEWSLETTER ────────────────────────────────────────── -->
   <section id="newsletter">
+    <div class="scroll-indicator scroll-indicator--dark" aria-hidden="true">
+      <div class="scroll-indicator-line"></div>
+      <span>Scroll</span>
+    </div>
     <div class="newsletter-inner">
       <p class="eyebrow reveal">Stay in the Room</p>
       <h2 class="reveal reveal-delay-1">Join the IRL Community</h2>
@@ -398,6 +424,83 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
     revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ── Full Page Snap Scroll (all sections) ───────────────── */
+    const snapSections = Array.from(document.querySelectorAll('section, footer'));
+    let isSnapping     = false;
+    let activeIndex    = 0;
+
+    // Find which section is closest to current scroll position
+    function getNearestIndex() {
+      const mid = window.scrollY + window.innerHeight / 2;
+      let nearest = 0, nearestDist = Infinity;
+      snapSections.forEach((sec, i) => {
+        const dist = Math.abs(sec.getBoundingClientRect().top + window.scrollY + sec.offsetHeight / 2 - mid);
+        if (dist < nearestDist) { nearestDist = dist; nearest = i; }
+      });
+      return nearest;
+    }
+
+    const programSection   = document.getElementById('program');
+    const programAnimEls   = programSection.querySelectorAll('.prog-animate');
+
+    function triggerProgramAnim() {
+      programSection.classList.remove('in-view');
+      // Force reflow so removing the class takes effect before re-adding
+      void programSection.offsetWidth;
+      programAnimEls.forEach(el => {
+        const delay = parseInt(el.dataset.delay) || 0;
+        setTimeout(() => { el.style.transitionDelay = delay + 'ms'; }, 0);
+      });
+      programSection.classList.add('in-view');
+    }
+
+    function goToSection(index) {
+      if (isSnapping) return;
+      if (index < 0 || index >= snapSections.length) return;
+      isSnapping  = true;
+      activeIndex = index;
+      snapSections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Fire program animation when snapping to that section
+      if (snapSections[index].id === 'program') {
+        setTimeout(triggerProgramAnim, 400);
+      }
+      setTimeout(() => { isSnapping = false; }, 950);
+    }
+
+    // Mouse wheel — intercept and snap
+    window.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (isSnapping) return;
+      activeIndex = getNearestIndex();
+      goToSection(activeIndex + (e.deltaY > 0 ? 1 : -1));
+    }, { passive: false });
+
+    // Touch swipe — up or down
+    let touchY = 0;
+    window.addEventListener('touchstart', (e) => {
+      touchY = e.touches[0].clientY;
+    }, { passive: true });
+    window.addEventListener('touchend', (e) => {
+      const diff = touchY - e.changedTouches[0].clientY;
+      if (Math.abs(diff) < 40) return;       // ignore tiny taps
+      activeIndex = getNearestIndex();
+      goToSection(activeIndex + (diff > 0 ? 1 : -1));
+    }, { passive: true });
+
+    // Keyboard arrow keys
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        e.preventDefault();
+        activeIndex = getNearestIndex();
+        goToSection(activeIndex + 1);
+      }
+      if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        activeIndex = getNearestIndex();
+        goToSection(activeIndex - 1);
+      }
+    });
 
     /* ── Newsletter Submit ───────────────────────────────────── */
     function handleNewsletter(e) {
