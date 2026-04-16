@@ -25,12 +25,55 @@
     </div>
 
     <ul class="nav-links" id="desktop-nav">
-      <li><a href="javascript:void(0)">About <span class="nav-arrow">&#8964;</span></a></li>
-      <li><a href="javascript:void(0)">Programs <span class="nav-arrow">&#8964;</span></a></li>
-      <li><a href="javascript:void(0)">Tools & Resources <span class="nav-arrow">&#8964;</span></a></li>
-      <li><a href="javascript:void(0)">IRL Advisors <span class="nav-arrow">&#8964;</span></a></li>
-      <li><a href="javascript:void(0)">Contact</a></li>
-      <li><a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="nav-cta-link">Take Your Legacy Snapshot</a></li>
+
+      <!-- About -->
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">About <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="about.html">About Us</a>
+          <a href="founder-letter.html">Letter from Our Founder</a>
+          <a href="partnership-pathways.html">Partnership Pathways</a>
+          <a href="faq.html">Frequently Asked Questions</a>
+        </div>
+      </li>
+
+      <!-- Programs -->
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Programs <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+
+      <!-- Tools & Resources -->
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Tools &amp; Resources <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+
+      <!-- IRL Advisors -->
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">IRL Advisors <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="irl-advisor.html">IRL Advisor</a>
+          <a href="founding-circle.html">Founding Circle</a>
+        </div>
+      </li>
+
+      <!-- Contact -->
+      <li class="nav-item">
+        <a href="contact.html">Contact</a>
+      </li>
+
+      <!-- CTA -->
+      <li class="nav-item">
+        <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="nav-cta-link">Take Your Legacy Snapshot</a>
+      </li>
+
     </ul>
   </nav>
 
@@ -210,7 +253,7 @@
         <p class="origin-body reveal reveal-delay-3">
           Lauren Miller built IRL so no family has to scramble for what should have already been in place. Not as a response to grief. As a living practice — while everyone is still here.
         </p>
-        <a href="#" class="origin-link reveal reveal-delay-4">
+        <a href="founder-letter.html" class="origin-link reveal reveal-delay-4">
           Read Lauren's Story
         </a>
       </div>
@@ -383,6 +426,22 @@
 
   <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
   <script>
+    /* ── Nav Dropdowns ───────────────────────────────────────── */
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+      item.querySelector('.nav-item-trigger').addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = item.classList.contains('open');
+        // Close all dropdowns first
+        document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open'));
+        // Toggle clicked one
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+    // Click anywhere outside to close all dropdowns
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open'));
+    });
+
     /* ── Sticky Nav ─────────────────────────────────────────── */
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {

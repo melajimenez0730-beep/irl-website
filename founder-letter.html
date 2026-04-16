@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter from Our Founder — In the Room with Legacy™</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Letter page layout ── */
+    .fl-hero {
+      background: var(--dusk);
+      padding: 8rem 2rem 5rem;
+      text-align: center;
+    }
+    .fl-hero .eyebrow { color: var(--clay); margin-bottom: 1.25rem; }
+    .fl-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 400;
+      color: var(--parchment);
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    /* Shared content container */
+    .fl-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Welcome section */
+    .fl-welcome {
+      background: var(--parchment);
+      padding: 5.5rem 2rem 4rem;
+      text-align: center;
+    }
+    .fl-welcome-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--dusk);
+      margin: 0 0 2rem;
+      line-height: 1;
+    }
+    .fl-welcome .fl-opening-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+      font-style: italic;
+      color: var(--dusk);
+      line-height: 1.65;
+      margin: 0 auto 2.25rem;
+      max-width: 640px;
+    }
+    .fl-welcome p {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: rgba(5,45,63,0.75);
+      margin: 0 auto 1.5rem;
+      max-width: 640px;
+    }
+
+    /* Body sections alternating white / parchment */
+    .fl-section {
+      padding: 4.5rem 2rem;
+    }
+    .fl-section--white  { background: var(--white); }
+    .fl-section--parch  { background: var(--parchment); }
+    .fl-section--dusk   { background: var(--dusk); }
+
+    /* Text */
+    .fl-body p {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: rgba(5,45,63,0.75);
+      margin-bottom: 1.5rem;
+    }
+    .fl-body p:last-child { margin-bottom: 0; }
+
+    /* Subheading mid-letter */
+    .fl-subhead {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 500;
+      color: var(--dusk);
+      margin: 0 0 1.75rem;
+      line-height: 1.3;
+    }
+
+    /* Photo block — centered, full max-width */
+    .fl-photo-wrap {
+      margin: 3.5rem auto;
+      max-width: 720px;
+      padding: 0 2rem;
+    }
+    .fl-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: var(--stone);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .fl-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .fl-photo-placeholder {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(5,45,63,0.35);
+    }
+    .fl-photo-caption {
+      margin-top: 0.75rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      color: rgba(5,45,63,0.45);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* Pull quote */
+    .fl-pullquote {
+      background: var(--dusk);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .fl-pullquote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.3rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--parchment);
+      line-height: 1.65;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Signature block */
+    .fl-signature {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(5,45,63,0.12);
+    }
+    .fl-signature-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--dusk);
+      line-height: 1.35;
+    }
+    .fl-signature-title {
+      display: block;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-top: 0.6rem;
+    }
+
+    /* Return link */
+    .fl-return {
+      background: var(--parchment);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(5,45,63,0.08);
+    }
+    .fl-return a {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dusk);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .fl-return a:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav" class="scrolled">
+    <a href="index.html" class="nav-logo">In the Room with Legacy™</a>
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="desktop-nav">
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">About <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="about.html">About Us</a>
+          <a href="founder-letter.html">Letter from Our Founder</a>
+          <a href="partnership-pathways.html">Partnership Pathways</a>
+          <a href="faq.html">Frequently Asked Questions</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Programs <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Tools &amp; Resources <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">IRL Advisors <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="irl-advisor.html">IRL Advisor</a>
+          <a href="founding-circle.html">Founding Circle</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="contact.html">Contact</a></li>
+      <li class="nav-item"><a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="nav-cta-link">Take Your Legacy Snapshot</a></li>
+    </ul>
+  </nav>
+
+  <div class="nav-mobile-overlay" id="mobile-menu">
+    <a href="index.html"                onclick="closeMobile()">Home</a>
+    <a href="about.html"                onclick="closeMobile()">About Us</a>
+    <a href="founder-letter.html"       onclick="closeMobile()">Letter from Our Founder</a>
+    <a href="partnership-pathways.html" onclick="closeMobile()">Partnership Pathways</a>
+    <a href="faq.html"                  onclick="closeMobile()">FAQ</a>
+    <a href="contact.html"              onclick="closeMobile()">Contact</a>
+    <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" class="mobile-cta">Take Your Legacy Snapshot →</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="fl-hero">
+    <p class="eyebrow reveal">From the Founder</p>
+    <h1 class="reveal reveal-delay-1">Letter from Our Founder</h1>
+  </section>
+
+  <!-- WELCOME -->
+  <section class="fl-welcome">
+    <p class="fl-welcome-word reveal">Welcome.</p>
+    <p class="fl-opening-quote reveal reveal-delay-1">
+      "Truly, welcome. If you've found your way here, it's not by accident. You were meant to be in this room."
+    </p>
+    <p class="reveal reveal-delay-2">
+      In the Room with Legacy was born out of love, loss, and a real need. A need for a space that honors and empowers the family, both related and chosen. A space that offers tools, resources, and frameworks that not only create generational value within a family, but also sow unity, healing, and love.
+    </p>
+    <p class="reveal reveal-delay-3">
+      A space that encourages and uplifts us, that highlights our stories and reminds us that legacy is intentional and alive. That it's something we live and breathe every day.
+    </p>
+    <p class="reveal reveal-delay-3">
+      It was also born out of the need to redefine our power. Because one of our greatest weapons against systemic and economic challenges is stronger families; families moving with unity, cohesion, and intention.
+    </p>
+    <p class="reveal reveal-delay-4">
+      Families are indeed the first institutions within civilization.
+    </p>
+  </section>
+
+  <!-- PHOTO 1: Lauren surrounded by plants -->
+  <div class="fl-photo-wrap reveal">
+    <div class="fl-photo">
+      <!-- To add photo: <img src="pictures/lauren-plants.jpg" alt="Lauren Miller surrounded by plants"> -->
+      <span class="fl-photo-placeholder">Photo — Lauren Miller</span>
+    </div>
+    <p class="fl-photo-caption">Lauren Miller surrounded by plants, representing the balance of heart and strategy in legacy work</p>
+  </div>
+
+  <!-- SECTION: Offering / Dedication -->
+  <section class="fl-section fl-section--white">
+    <div class="fl-container fl-body">
+      <p class="reveal">
+        I created In the Room with Legacy as an offering. A labor of love.
+      </p>
+      <p class="reveal reveal-delay-1">
+        It's the fruit of everything I was taught, everything I've witnessed, and everything I now feel called to carry forward.
+      </p>
+      <p class="reveal reveal-delay-2">
+        This work is dedicated to my father. The man whose life and example shaped so much of who I am, especially at the end of his life.
+      </p>
+      <h2 class="fl-subhead reveal reveal-delay-3">My father, my teacher, my anchor.</h2>
+    </div>
+  </section>
+
+  <!-- PHOTO 2: Father and daughter -->
+  <div class="fl-photo-wrap reveal">
+    <div class="fl-photo">
+      <!-- To add photo: <img src="pictures/father-daughter.jpg" alt="Father and daughter having an important conversation"> -->
+      <span class="fl-photo-placeholder">Photo — Father &amp; Daughter</span>
+    </div>
+    <p class="fl-photo-caption">Father and daughter having an important conversation</p>
+  </div>
+
+  <!-- SECTION: His illness -->
+  <section class="fl-section fl-section--parch">
+    <div class="fl-container fl-body">
+      <p class="reveal">
+        In hindsight, I can see now that my father's illness, though heartbreaking, was a divine part of my path. At the time, I couldn't understand it. I was 26, young, building my dreams, and suddenly life said, "Nah, you're about to go through the wringer."
+      </p>
+      <p class="reveal reveal-delay-1">
+        His request, "help me live as long as possible to get you and your siblings ready for my departure."
+      </p>
+      <p class="reveal reveal-delay-2">
+        I was devastated. Angry, even. It felt unfair. I entered a season of sacrifice, unconditional love, heartbreak, and exhaustion. But looking back, I realize it was preparation that positioned me to carry this message in a way I never could have otherwise.
+      </p>
+    </div>
+  </section>
+
+  <!-- PHOTO 3: Mayor Maynard Jackson -->
+  <div class="fl-photo-wrap reveal">
+    <div class="fl-photo">
+      <!-- To add photo: <img src="pictures/mayor-jackson.jpg" alt="Mayor Maynard Jackson, Atlanta's first Black mayor"> -->
+      <span class="fl-photo-placeholder">Photo — Mayor Maynard Jackson</span>
+    </div>
+    <p class="fl-photo-caption">Mayor Maynard Jackson, Atlanta's first Black mayor</p>
+  </div>
+
+  <!-- SECTION: Father's legacy -->
+  <section class="fl-section fl-section--white">
+    <div class="fl-container fl-body">
+      <p class="reveal">
+        My father was a changemaker, a pioneer, a history maker, a man who helped shape Atlanta's story. A son of farmers &amp; landowners, who rose to serve under Mayor Maynard Jackson, Atlanta's first Black mayor, helped to open doors of economic opportunity that had been closed for generations. A builder and business owner, who lived a deeply impactful life, and sowed into his lineage with intention.
+      </p>
+      <p class="reveal reveal-delay-1">
+        When he fell ill, what began as caregiving became stewardship and succession. I wasn't just taking care of my dad; I was helping preserve his legacy, ensuring the business he built endured, and making sure he could leave this world with his dignity and vision intact. It was mentally, emotionally, and physically exhausting.
+      </p>
+      <p class="reveal reveal-delay-2">
+        It broke me, but it also built me.
+      </p>
+    </div>
+  </section>
+
+  <!-- PHOTO 4: Young Lauren with father -->
+  <div class="fl-photo-wrap reveal">
+    <div class="fl-photo">
+      <!-- To add photo: <img src="pictures/young-lauren-father.jpg" alt="Young Lauren Miller with her father"> -->
+      <span class="fl-photo-placeholder">Photo — Young Lauren with her father</span>
+    </div>
+    <p class="fl-photo-caption">Young Lauren Miller with her father</p>
+  </div>
+
+  <!-- SECTION: What she learned -->
+  <section class="fl-section fl-section--parch">
+    <div class="fl-container fl-body">
+      <p class="reveal">
+        Through it all, I learned so much. About so much. From the 4 year experience but also because my Dad was actively teaching and training me up. I was a matriarch in the making you could say. Learning in real time about the healthcare system, how to navigate it, it's inefficiencies and what it really means to advocate and care for someone you love. I learned about stewardship, about end-of-life care and planning, about family tradition &amp; values, about inherited responsibility, about all the moving parts that make up both legacy building and preservation.
+      </p>
+      <p class="reveal reveal-delay-1">
+        Learning from my father's story, the things he had in place and the things he didn't. The areas where we had time to prepare and the ones where we didn't. The stories that needed to be preserved, the lessons that needed to be written down. The shoulda, coulda, woulda's and regrets and apologies. Every detail, every moment, every conversation became a masterclass in legacy.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAMILY LEGACY SUBHEADING + PHOTO 5 -->
+  <section class="fl-section fl-section--white">
+    <div class="fl-container">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 1rem;">Family Legacy</p>
+    </div>
+  </section>
+
+  <div class="fl-photo-wrap reveal" style="margin-top: 0;">
+    <div class="fl-photo">
+      <!-- To add photo: <img src="pictures/philly-project.jpg" alt="The Philly Project - Legacy in action"> -->
+      <span class="fl-photo-placeholder">Photo — The Philly Project</span>
+    </div>
+    <p class="fl-photo-caption">The Philly Project — Legacy in action</p>
+  </div>
+
+  <!-- SECTION: Family lineage / farming -->
+  <section class="fl-section fl-section--white" style="padding-top: 2rem;">
+    <div class="fl-container fl-body">
+      <p class="reveal">
+        As he'd tell our family's history, I started to see the bigger picture, not just of my father's life, but of my family's lineage. I began noticing the through-line of stewardship in our story: the land we've owned for generations, how every era had someone who tilled, someone who planted, someone who carried the weight of keeping it all alive.
+      </p>
+      <p class="reveal reveal-delay-1">
+        Farming isn't just part of our history, it's society's teacher. Watching how the land has been cared for over 150 years taught me what generational legacy really is: sowing, nurturing, protecting, harvesting, and trusting that what you plant will feed generations you'll never meet.
+      </p>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section class="fl-pullquote">
+    <blockquote class="reveal">
+      "That perspective awakened a deeper passion in me."
+    </blockquote>
+  </section>
+
+  <!-- SECTION: Hunger to study / build -->
+  <section class="fl-section fl-section--parch">
+    <div class="fl-container fl-body">
+      <p class="reveal">
+        A hunger to study, to learn, to teach, to build community.
+      </p>
+      <p class="reveal reveal-delay-1">
+        To study family, both enterprising and not. To explore economic empowerment through the lens of family and the systems that shape opportunity.
+      </p>
+      <p class="reveal reveal-delay-2">
+        To learn how culture, values, and heritage contribute to the growth and sustainability of a family.
+      </p>
+      <p class="reveal reveal-delay-3">
+        To develop and teach frameworks and infrastructure that help guide us forward.
+      </p>
+    </div>
+  </section>
+
+  <!-- PHOTO 6: Lauren speaking at event -->
+  <div class="fl-photo-wrap reveal">
+    <div class="fl-photo">
+      <!-- To add photo: <img src="pictures/lauren-speaking.jpg" alt="Lauren Miller speaking at an event"> -->
+      <span class="fl-photo-placeholder">Photo — Lauren speaking at an event</span>
+    </div>
+    <p class="fl-photo-caption">Lauren Miller speaking at an event, sharing legacy wisdom with the audience</p>
+  </div>
+
+  <!-- SECTION: Collective / closing vision -->
+  <section class="fl-section fl-section--white">
+    <div class="fl-container fl-body">
+      <p class="reveal">
+        But In the Room with Legacy isn't all about what I've learned, it's about what we can learn together.
+      </p>
+      <p class="reveal reveal-delay-1">
+        This is a collective effort. A living, breathing hub of knowledge, experience, and expertise.
+      </p>
+      <p class="reveal reveal-delay-1">
+        We'll be learning from elders, advisors, builders, scholars, and everyday people who've done the work, people who are living this in real time.
+      </p>
+      <p class="reveal reveal-delay-2">
+        It's a community rooted in collaboration because legacy is a shared practice. None of us can build it alone.
+      </p>
+      <p class="reveal reveal-delay-2">
+        So that's what this is.
+      </p>
+      <p class="reveal reveal-delay-3">
+        A home for those of us building with heart.
+      </p>
+      <p class="reveal reveal-delay-3">
+        A movement for those who understand that family is the foundation of everything.
+      </p>
+      <p class="reveal reveal-delay-4">
+        A gathering place for the dreamers, the doers, the descendants, and the builders.
+      </p>
+      <p class="reveal reveal-delay-4">
+        We're creating this slowly, brick by brick, because love doesn't rush, and legacy takes its time.
+      </p>
+      <p class="reveal reveal-delay-4">
+        Every story shared, every program offered, every tool created is made with care.
+      </p>
+      <p class="reveal reveal-delay-4">
+        My hope is that you feel held here. That something in these words reminds you of home. Of your people, your purpose, your power.
+      </p>
+      <p class="reveal reveal-delay-4">
+        Thank you for being here, for believing in what's possible, and for joining me in this sacred work of remembering and becoming.
+      </p>
+
+      <!-- SIGNATURE -->
+      <div class="fl-signature reveal reveal-delay-4">
+        <div class="fl-signature-name">
+          With love and legacy,<br>Lauren Rosa
+        </div>
+        <span class="fl-signature-title">Founder, In the Room with Legacy™</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETURN LINK -->
+  <div class="fl-return">
+    <a href="about.html">← Return to About</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-logo">In the Room with Legacy™</a>
+        <p class="footer-tagline">"The family is the first institution."</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X / Twitter">X</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">About</p>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="founder-letter.html">Letter from Our Founder</a></li>
+          <li><a href="partnership-pathways.html">Partnership Pathways</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Advisory</p>
+        <ul>
+          <li><a href="irl-advisor.html">IRL Advisors</a></li>
+          <li><a href="founding-circle.html">Founding Circle</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Platform</p>
+        <ul>
+          <li><a href="legacy-insights.html">Legacy Insights</a></li>
+          <li><a href="legacy-assessment.html">Legacy Assessment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 In the Room with Legacy Inc. All rights reserved.</p>
+      <p class="footer-ein">EIN 99-4135483<br>While We're Still Here™ is a registered nonprofit initiative</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('nav').classList.add('scrolled');
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+      item.querySelector('.nav-item-trigger').addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open'));
+    });
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function closeMobile() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.contains('open');
+      open ? closeMobile() : (hamburger.classList.add('active'), mobileMenu.classList.add('open'), document.body.style.overflow = 'hidden');
+    });
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
