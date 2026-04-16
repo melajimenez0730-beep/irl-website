@@ -238,6 +238,71 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 0 18px rgba(201,168,76,0.45);
 }
 
+/* Dropdown menus */
+.nav-item { position: relative; }
+
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--dusk);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 0.6rem 0;
+  min-width: 220px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+  z-index: 300;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+/* Small arrow pointer at the top of dropdown */
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--dusk);
+  border-left: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  rotate: 45deg;
+}
+
+.nav-item.open .nav-dropdown {
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: all;
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: 0.65rem 1.35rem;
+  font-size: 0.82rem !important;
+  color: rgba(255,255,255,0.72) !important;
+  text-decoration: none;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+  transition: background 0.15s, color 0.15s, padding-left 0.15s;
+  border-radius: 0;
+}
+.nav-dropdown a:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--white) !important;
+  padding-left: 1.65rem;
+}
+
+/* Rotate arrow when dropdown is open */
+.nav-item.open .nav-arrow { transform: translateY(-5px) rotate(180deg); }
+
 /* Hamburger — hidden on desktop, shown on mobile */
 .hamburger {
   display: none;
@@ -1211,6 +1276,199 @@ footer {
   text-align: right;
 }
 
+
+/* ─────────────────────────────────────────────────────────
+   16b. INNER PAGES
+───────────────────────────────────────────────────────── */
+
+/* Page header — shorter hero for inner pages */
+.page-header {
+  background: var(--dusk);
+  padding: 10rem 3.5rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 50%, rgba(154,74,11,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(255,255,255,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+/* Grain on page header */
+.page-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+  opacity: 0.04;
+  pointer-events: none;
+}
+.page-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.page-header .eyebrow { color: var(--clay); margin-bottom: 1.25rem; }
+.page-header h1 {
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.06;
+  max-width: 720px;
+  margin-bottom: 1.5rem;
+}
+.page-header-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 520px;
+  line-height: 1.8;
+}
+
+/* Content sections for inner pages */
+.page-section {
+  padding: 6rem 3.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.page-section-full {
+  padding: 6rem 3.5rem;
+  background: var(--parchment);
+}
+.page-section-full .page-section { padding-top: 0; padding-bottom: 0; }
+
+.page-section h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 600;
+  color: var(--dusk);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+.page-section p {
+  font-size: 1.02rem;
+  color: rgba(5,45,63,0.68);
+  line-height: 1.9;
+  max-width: 680px;
+  margin-bottom: 1.5rem;
+}
+
+/* Card grid for inner pages */
+.inner-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.inner-card {
+  background: var(--white);
+  border: 1px solid var(--stone);
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.inner-card:hover {
+  box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+.inner-card .eyebrow { color: var(--clay); margin-bottom: 0.85rem; }
+.inner-card h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--dusk);
+  line-height: 1.15;
+  margin-bottom: 0.85rem;
+}
+.inner-card p {
+  font-size: 0.9rem;
+  color: rgba(5,45,63,0.62);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+/* Contact form */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dusk);
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.85rem 1.1rem;
+  border: 1.5px solid var(--stone);
+  border-radius: 6px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--dusk);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.22s;
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: var(--clay); }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(5,45,63,0.35); }
+.form-group textarea { min-height: 140px; }
+
+.contact-info h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--dusk);
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+.contact-info p {
+  font-size: 1rem;
+  color: rgba(5,45,63,0.65);
+  line-height: 1.85;
+  margin-bottom: 2rem;
+}
+.contact-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.contact-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.contact-detail-item span:first-child {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+.contact-detail-item span:last-child {
+  font-size: 0.95rem;
+  color: var(--dusk);
+}
+
+@media (max-width: 768px) {
+  .page-header       { padding: 8rem 1.5rem 4rem; }
+  .page-section      { padding: 4rem 1.5rem; }
+  .page-section-full { padding: 4rem 1.5rem; }
+  .inner-card-grid   { grid-template-columns: 1fr; }
+  .contact-grid      { grid-template-columns: 1fr; gap: 3rem; }
+}
 
 /* ─────────────────────────────────────────────────────────
    16. RESPONSIVE / MEDIA QUERIES
