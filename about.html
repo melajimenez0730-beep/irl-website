@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — In the Room with Legacy™</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── About page hero overrides ── */
+    .about-header-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('pictures/about-us-pic.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35;
+      z-index: 0;
+    }
+    .page-header {
+      padding: 14rem 3.5rem 8rem;
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
+    }
+    .page-header-inner { width: 100%; }
+    .page-header h1 {
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      max-width: 900px;
+    }
+    .page-header-sub {
+      font-size: 1.15rem;
+      max-width: 680px;
+    }
+    @media (max-width: 768px) {
+      .page-header { padding: 10rem 1.5rem 5rem; min-height: 60vh; }
+    }
+
+    /* ── Pillars ── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 900px) { .pillars-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .pillars-grid { grid-template-columns: 1fr; } }
+
+    .pillar-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 2.25rem 1.75rem;
+      border-top: 3px solid var(--clay);
+    }
+    .pillar-card .pillar-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--dusk);
+      margin: 0.5rem 0 0.75rem;
+      letter-spacing: 0.02em;
+    }
+    .pillar-card p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(5,45,63,0.68);
+      margin: 0;
+    }
+
+    /* ── What We Do pathways ── */
+    .pathways-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 768px) { .pathways-grid { grid-template-columns: 1fr; } }
+
+    .pathway-card {
+      background: var(--parchment);
+      border-radius: 6px;
+      padding: 2.25rem 2rem;
+    }
+    .pathway-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--dusk);
+      margin: 0.5rem 0 0.75rem;
+    }
+    .pathway-card p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(5,45,63,0.7);
+      margin: 0;
+    }
+
+    /* ── Practice Areas ── */
+    .practice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .practice-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2.5rem;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: 6px;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .practice-item { grid-template-columns: 1fr; gap: 1rem; } }
+    .practice-item-left .eyebrow { color: var(--clay); margin-bottom: 0.5rem; }
+    .practice-item-left h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--dusk);
+      margin: 0;
+    }
+    .practice-item-right p {
+      font-size: 0.98rem;
+      line-height: 1.85;
+      color: rgba(5,45,63,0.7);
+      margin: 0 0 0.75rem;
+    }
+    .practice-item-right p:last-child { margin: 0; }
+    .practice-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .practice-tag {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--clay);
+      border: 1px solid rgba(154,74,11,0.3);
+      border-radius: 100px;
+      padding: 0.25rem 0.75rem;
+    }
+
+    /* ── Mission & Vision ── */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 768px) { .mv-grid { grid-template-columns: 1fr; } }
+    .mv-card {
+      padding: 2.5rem;
+      background: var(--white);
+      border-radius: 6px;
+    }
+    .mv-card .eyebrow { color: var(--clay); margin-bottom: 0.75rem; }
+    .mv-card .mv-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: rgba(5,45,63,0.6);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .mv-card p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(5,45,63,0.75);
+      margin: 0;
+    }
+
+    /* ── Founder ── */
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .founder-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .founder-photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: var(--stone);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .founder-photo-label {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(5,45,63,0.35);
+    }
+    .founder-text .eyebrow { color: var(--clay); margin-bottom: 0.75rem; }
+    .founder-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 500;
+      color: var(--dusk);
+      margin-bottom: 0.35rem;
+    }
+    .founder-text .founder-role {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 1.75rem;
+    }
+    .founder-text p {
+      font-size: 1.02rem;
+      line-height: 1.9;
+      color: rgba(5,45,63,0.72);
+      margin-bottom: 1.25rem;
+    }
+    .founder-text p:last-of-type { margin-bottom: 1.75rem; }
+
+    /* ── Nonprofit band ── */
+    .nonprofit-band {
+      background: var(--dusk);
+      padding: 4rem 3.5rem;
+    }
+    .nonprofit-band-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .nonprofit-band { padding: 3rem 1.5rem; }
+      .nonprofit-band-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    .nonprofit-band .eyebrow { color: var(--clay); margin-bottom: 0.75rem; }
+    .nonprofit-band h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 400;
+      color: var(--parchment);
+      margin-bottom: 1rem;
+    }
+    .nonprofit-band p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(237,224,204,0.72);
+      margin: 0;
+    }
+
+    /* ── CTA band ── */
+    .cta-band {
+      background: var(--clay);
+      padding: 5rem 3.5rem;
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .cta-band p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2rem;
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--clay);
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 1rem 2.5rem;
+      border-radius: 2px;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+    .btn-white:hover { opacity: 0.88; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav" class="scrolled">
+    <a href="index.html" class="nav-logo">In the Room with Legacy™</a>
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="desktop-nav">
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">About <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="about.html">About Us</a>
+          <a href="founder-letter.html">Letter from Our Founder</a>
+          <a href="partnership-pathways.html">Partnership Pathways</a>
+          <a href="faq.html">Frequently Asked Questions</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Programs <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Tools &amp; Resources <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">IRL Advisors <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="irl-advisor.html">IRL Advisor</a>
+          <a href="founding-circle.html">Founding Circle</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="contact.html">Contact</a></li>
+      <li class="nav-item"><a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="nav-cta-link">Take Your Legacy Snapshot</a></li>
+    </ul>
+  </nav>
+
+  <div class="nav-mobile-overlay" id="mobile-menu">
+    <a href="index.html"                onclick="closeMobile()">Home</a>
+    <a href="about.html"                onclick="closeMobile()">About Us</a>
+    <a href="founder-letter.html"       onclick="closeMobile()">Letter from Our Founder</a>
+    <a href="partnership-pathways.html" onclick="closeMobile()">Partnership Pathways</a>
+    <a href="faq.html"                  onclick="closeMobile()">FAQ</a>
+    <a href="contact.html"              onclick="closeMobile()">Contact</a>
+    <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" class="mobile-cta">Take Your Legacy Snapshot →</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="about-header-bg"></div>
+    <div class="page-header-inner">
+      <p class="eyebrow reveal">Who We Are</p>
+      <h1 class="reveal reveal-delay-1">The Business<br>of Family</h1>
+      <p class="page-header-sub reveal reveal-delay-2">
+        Beyond Wealth. Beyond Money. Beyond One Generation.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section style="background: var(--white);">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 1rem;">Who We Are</p>
+      <p class="reveal reveal-delay-1" style="font-size: 1.08rem; line-height: 1.95; color: rgba(5,45,63,0.75); margin-bottom: 1.5rem;">
+        In the Room with Legacy™ (IRL) is a platform, movement &amp; home for those building with intention. A place where the business of family, heritage, and wealth come together. Through storytelling, programs, and technology, we make legacy a living practice.
+      </p>
+      <p class="reveal reveal-delay-2" style="font-size: 1.08rem; line-height: 1.95; color: rgba(5,45,63,0.75); margin-bottom: 1.5rem;">
+        Powered by IRL Advisors, our family governance and legacy-tech advisory firm, we bridge the emotional, cultural and financial dimensions of legacy. Transforming awareness into action by equipping families, individuals, and communities with the tools and frameworks to build and preserve what matters most. We help families understand where they stand today, strengthen what they've inherited, and prepare the next generation to lead with clarity.
+      </p>
+      <p class="reveal reveal-delay-3" style="font-size: 1.08rem; line-height: 1.95; color: rgba(5,45,63,0.75);">
+        We begin with the Legacy Snapshot, our 3–5 minute assessment. We are also piloting NIA, the beta version of In the Room with Legacy's emerging Legacy Operating System — designed to help families assess, document, preserve, and carry legacy while we're still here.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOUR PILLARS -->
+  <div class="page-section-full">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 1rem;">What We Stand On</p>
+      <h2 class="reveal reveal-delay-1">The Four Pillars of Legacy</h2>
+      <p class="reveal reveal-delay-2">
+        The enduring foundations that shape how individuals &amp; families understand themselves, honor where they come from, and build what continues after them.
+      </p>
+      <div class="pillars-grid">
+        <div class="pillar-card reveal">
+          <p class="eyebrow">01</p>
+          <p class="pillar-name">Identity</p>
+          <p>Your values, name, beliefs, and the sense of belonging that shapes your path.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-1">
+          <p class="eyebrow">02</p>
+          <p class="pillar-name">Heritage</p>
+          <p>The culture, land, lineage, rituals, and stories that formed you.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-2">
+          <p class="eyebrow">03</p>
+          <p class="pillar-name">Wealth</p>
+          <p>Financial, cultural, relational, and spiritual resources — all of which require stewardship.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-3">
+          <p class="eyebrow">04</p>
+          <p class="pillar-name">Continuation</p>
+          <p>The systems, roles, and transitions that ensure what you are building outlives you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT WE DO -->
+  <section style="background: var(--white);">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 1rem;">What We Do</p>
+      <h2 class="reveal reveal-delay-1">Four pathways. One living practice.</h2>
+      <p class="reveal reveal-delay-2">
+        Every offering, from our workshops to our technology, is designed to make legacy a living practice. Our work lives at the intersection of four pathways that together make legacy real, relevant, and repeatable:
+      </p>
+      <div class="pathways-grid">
+        <div class="pathway-card reveal">
+          <p class="eyebrow">Pathway 01</p>
+          <h3>Storytelling &amp; Documentation</h3>
+          <p>We help families and individuals preserve what matters most: the stories, values, and milestones that define who they are. Through guided prompts, digital tools, and curated archives, we make remembering a shared act of love.</p>
+        </div>
+        <div class="pathway-card reveal reveal-delay-1">
+          <p class="eyebrow">Pathway 02</p>
+          <h3>Learning &amp; Tools</h3>
+          <p>We build the practical frameworks that turn reflection into action, from our Legacy Assessment Tool to workshops and educational guides. These resources make planning, preparation, and conversation accessible for every generation.</p>
+        </div>
+        <div class="pathway-card reveal reveal-delay-2">
+          <p class="eyebrow">Pathway 03</p>
+          <h3>Advisory &amp; Community</h3>
+          <p>Legacy isn't built alone. We connect families, professionals, and experts through advisory programs, partnerships, and networks that sustain impact and accountability over time.</p>
+        </div>
+        <div class="pathway-card reveal reveal-delay-3">
+          <p class="eyebrow">Pathway 04</p>
+          <h3>Experiences &amp; Programs</h3>
+          <p>We create transformative spaces: gatherings, retreats, and intergenerational sessions that bring the spirit of legacy to life. These experiences nurture connection, clarity, and commitment across generations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY PRACTICE AREAS -->
+  <div class="page-section-full">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 1rem;">Our Focus</p>
+      <h2 class="reveal reveal-delay-1">Key Practice Areas</h2>
+      <p class="reveal reveal-delay-2">
+        These practice areas guide how we design every tool, program, and experience within In the Room with Legacy. They represent the domains where families most often seek clarity, support, and structure — and where our work can make the greatest impact.
+      </p>
+      <div class="practice-list">
+
+        <div class="practice-item reveal">
+          <div class="practice-item-left">
+            <p class="eyebrow">01</p>
+            <h3>Family Legacy</h3>
+          </div>
+          <div class="practice-item-right">
+            <p>Building a foundation of values, traditions, and practices that strengthen family identity and connection across generations.</p>
+            <div class="practice-tags">
+              <span class="practice-tag">Storytelling &amp; Documentation</span>
+              <span class="practice-tag">Learning &amp; Tools</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-item reveal reveal-delay-1">
+          <div class="practice-item-left">
+            <p class="eyebrow">02</p>
+            <h3>Next-Gen Stewardship</h3>
+          </div>
+          <div class="practice-item-right">
+            <p>Preparing future generations to receive, maintain, and grow the family's legacy through education, mentorship, and guided experience.</p>
+            <div class="practice-tags">
+              <span class="practice-tag">Advisory &amp; Community</span>
+              <span class="practice-tag">Experiences &amp; Programs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-item reveal reveal-delay-2">
+          <div class="practice-item-left">
+            <p class="eyebrow">03</p>
+            <h3>Community &amp; Belonging</h3>
+          </div>
+          <div class="practice-item-right">
+            <p>Strengthening the bonds, rituals, and relationships that keep families rooted across generations, geography, and life seasons. Centering connection: how families gather, how they communicate, how they resolve conflict, and how they remain emotionally woven together even as life shifts.</p>
+            <p>Helping families cultivate spaces where everyone feels seen, valued, and part of something larger than themselves.</p>
+            <div class="practice-tags">
+              <span class="practice-tag">Learning &amp; Tools</span>
+              <span class="practice-tag">Storytelling &amp; Documentation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-item reveal reveal-delay-3">
+          <div class="practice-item-left">
+            <p class="eyebrow">04</p>
+            <h3>Economic Empowerment</h3>
+          </div>
+          <div class="practice-item-right">
+            <p>Creating sustainable financial foundations and teaching principles that support multigenerational wealth stewardship and growth.</p>
+            <div class="practice-tags">
+              <span class="practice-tag">Experiences &amp; Programs</span>
+              <span class="practice-tag">Advisory &amp; Community</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-item reveal reveal-delay-3">
+          <div class="practice-item-left">
+            <p class="eyebrow">05</p>
+            <h3>Transitions &amp; Healing</h3>
+          </div>
+          <div class="practice-item-right">
+            <p>Navigating major life changes, succession planning, and healing fractured relationships to ensure continuity during pivotal moments.</p>
+            <div class="practice-tags">
+              <span class="practice-tag">Storytelling &amp; Documentation</span>
+              <span class="practice-tag">Experiences &amp; Programs</span>
+              <span class="practice-tag">Advisory &amp; Community</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION & VISION -->
+  <section style="background: var(--white);">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 1rem;">Why We Exist</p>
+      <h2 class="reveal reveal-delay-1">Mission &amp; Vision</h2>
+      <div class="mv-grid">
+        <div class="mv-card reveal reveal-delay-2">
+          <p class="eyebrow">Mission</p>
+          <p class="mv-intro">Our mission began as a personal journey of care and remembrance.</p>
+          <p>Our mission is to make legacy building and preservation accessible to all, transforming how individuals and families see themselves and their collective power to leverage their heritage, resources, and relationships to build enduring legacy.</p>
+        </div>
+        <div class="mv-card reveal reveal-delay-3">
+          <p class="eyebrow">Vision</p>
+          <p class="mv-intro">We envision a future where stories and values are passed down with the same care as financial assets.</p>
+          <p>A world where legacy is a living practice. Where families operate with clarity, unity, and generational purpose. We envision communities built on strong family foundations, where legacy transcends wealth to include wisdom, values, and stewardship.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NONPROFIT COMMITMENT -->
+  <div class="nonprofit-band">
+    <div class="nonprofit-band-inner">
+      <div>
+        <p class="eyebrow reveal" style="color: var(--clay);">501(c)(3)</p>
+        <h2 class="reveal reveal-delay-1">Our Nonprofit Commitment</h2>
+        <p class="reveal reveal-delay-2">
+          Through In the Room With Legacy, Inc., our 501(c)(3) organization, we work to make legacy preparation, storytelling, and preservation accessible to all families — especially those historically excluded from generational wealth and documentation.
+        </p>
+      </div>
+      <div class="reveal reveal-delay-3" style="text-align: center;">
+        <a href="contact.html" class="btn btn-clay" style="font-size: 0.95rem; padding: 1rem 2rem;">
+          Donate to Support Access
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT THE FOUNDER -->
+  <section style="background: var(--white);">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 2.5rem;">The Person Behind the Work</p>
+      <div class="founder-grid">
+        <div class="reveal">
+          <div class="founder-photo">
+            <!-- To add photo: <img src="pictures/lauren-founder.jpg" alt="Lauren Rosa Miller"> -->
+            <span class="founder-photo-label">Photo — Lauren Rosa Miller</span>
+          </div>
+        </div>
+        <div class="founder-text reveal reveal-delay-1">
+          <p class="eyebrow">About the Founder</p>
+          <h3>Lauren Rosa Miller</h3>
+          <p class="founder-role">Founder &amp; Chief Legacy Officer</p>
+          <p>
+            Lauren Rosa Miller is a second-generation business owner, speaker, and legacy strategist who serves as keeper of her family's 150-year heritage.
+          </p>
+          <p>
+            The daughter of pioneers in government and economic inclusion, she bridges business, heritage, and heart to help families move with clarity and purpose.
+          </p>
+          <p>
+            A global citizen and storyteller at heart, Lauren has dedicated her career to preserving what matters most — not just wealth, but wisdom and identity. She founded In the Room with Legacy™ to bring structure and soul to the way families build and sustain their legacies.
+          </p>
+          <a href="founder-letter.html" class="btn btn-clay" style="font-size: 0.95rem; padding: 0.9rem 2rem;">
+            Read Lauren's Letter
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2 class="reveal">Begin with Your Legacy Snapshot</h2>
+    <p class="reveal reveal-delay-1">Your 3–5 minute assessment begins your IRL journey.</p>
+    <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="btn-white reveal reveal-delay-2">
+      Take the Legacy Snapshot
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-logo">In the Room with Legacy™</a>
+        <p class="footer-tagline">"The family is the first institution."</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X / Twitter">X</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">About</p>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="founder-letter.html">Letter from Our Founder</a></li>
+          <li><a href="partnership-pathways.html">Partnership Pathways</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Advisory</p>
+        <ul>
+          <li><a href="irl-advisor.html">IRL Advisors</a></li>
+          <li><a href="founding-circle.html">Founding Circle</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Platform</p>
+        <ul>
+          <li><a href="legacy-insights.html">Legacy Insights</a></li>
+          <li><a href="legacy-assessment.html">Legacy Assessment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 In the Room with Legacy Inc. All rights reserved.</p>
+      <p class="footer-ein">EIN 99-4135483<br>While We're Still Here™ is a registered nonprofit initiative</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('nav').classList.add('scrolled');
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+      item.querySelector('.nav-item-trigger').addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+    document.addEventListener('click', () => document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open')));
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function closeMobile() { hamburger.classList.remove('active'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+    hamburger.addEventListener('click', () => { const open = mobileMenu.classList.contains('open'); open ? closeMobile() : (hamburger.classList.add('active'), mobileMenu.classList.add('open'), document.body.style.overflow = 'hidden'); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
