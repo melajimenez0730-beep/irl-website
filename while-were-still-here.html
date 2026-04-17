@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>While We're Still Here™ — In the Room with Legacy™</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── What Is section ──────────────────────────────── */
+    .wwsh-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .wwsh-intro-grid h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--dusk);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .wwsh-intro-grid p {
+      font-size: 1rem;
+      color: rgba(5,45,63,0.68);
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+    .wwsh-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .wwsh-benefit {
+      padding: 1.5rem 1.75rem;
+      background: var(--parchment);
+      border-radius: 8px;
+      border-left: 3px solid var(--clay);
+    }
+    .wwsh-benefit h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dusk);
+      margin-bottom: 0.4rem;
+    }
+    .wwsh-benefit p {
+      font-size: 0.9rem;
+      color: rgba(5,45,63,0.65);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ── Five Phases ──────────────────────────────────── */
+    .phases-band {
+      background: var(--dusk);
+      padding: 6rem 3.5rem;
+    }
+    .phases-band .eyebrow { color: var(--clay); margin-bottom: 1rem; }
+    .phases-band h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .phases-band .sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 4rem;
+    }
+    .phases-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 760px;
+    }
+    .phase-item {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 1.75rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      align-items: start;
+    }
+    .phase-item:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+    .phase-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--clay);
+      line-height: 1;
+      opacity: 0.7;
+    }
+    .phase-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    .phase-content p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+    }
+
+    /* ── Formats ──────────────────────────────────────── */
+    .formats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .format-card {
+      background: var(--white);
+      border: 1px solid var(--stone);
+      border-radius: 10px;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .format-card .eyebrow { color: var(--clay); }
+    .format-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--dusk);
+      line-height: 1.15;
+    }
+    .format-card p {
+      font-size: 0.92rem;
+      color: rgba(5,45,63,0.65);
+      line-height: 1.8;
+      flex: 1;
+    }
+    .format-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--clay);
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--stone);
+    }
+
+    /* ── Is This For You ──────────────────────────────── */
+    .for-you-band {
+      background: var(--parchment);
+      padding: 6rem 3.5rem;
+    }
+    .for-you-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      max-width: 860px;
+    }
+    .for-you-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      font-size: 0.95rem;
+      color: rgba(5,45,63,0.75);
+      line-height: 1.6;
+    }
+    .for-you-item::before {
+      content: '✓';
+      color: var(--clay);
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Founder quote ────────────────────────────────── */
+    .founder-quote-band {
+      background: var(--dusk);
+      padding: 6rem 3.5rem;
+      text-align: center;
+    }
+    .founder-quote-band blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--parchment);
+      line-height: 1.55;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .founder-quote-band cite {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.82rem;
+      font-style: normal;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+    }
+
+    @media (max-width: 1024px) {
+      .wwsh-intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .formats-grid    { grid-template-columns: 1fr; }
+      .for-you-grid    { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .phases-band     { padding: 4rem 1.5rem; }
+      .for-you-band    { padding: 4rem 1.5rem; }
+      .founder-quote-band { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav id="nav" class="scrolled">
+    <a href="index.html" class="nav-logo">In the Room with Legacy™</a>
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="desktop-nav">
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">About <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="about.html">About Us</a>
+          <a href="founder-letter.html">Letter from Our Founder</a>
+          <a href="partnership-pathways.html">Partnership Pathways</a>
+          <a href="faq.html">Frequently Asked Questions</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Programs <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="programs.html">Programs</a>
+          <a href="while-were-still-here.html">While We're Still Here</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Tools &amp; Resources <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">IRL Advisors <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="irl-advisor.html">IRL Advisor</a>
+          <a href="founding-circle.html">Founding Circle</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="contact.html">Contact</a></li>
+      <li class="nav-item">
+        <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="nav-cta-link">Take Your Legacy Snapshot</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile-overlay" id="mobile-menu">
+    <a href="about.html"                onclick="closeMobile()">About Us</a>
+    <a href="founder-letter.html"       onclick="closeMobile()">Founder Letter</a>
+    <a href="partnership-pathways.html" onclick="closeMobile()">Partnership Pathways</a>
+    <a href="faq.html"                  onclick="closeMobile()">FAQ</a>
+    <a href="contact.html"              onclick="closeMobile()">Contact</a>
+    <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" onclick="closeMobile()" class="mobile-cta">Take Your Legacy Snapshot →</a>
+  </div>
+
+
+  <!-- ─── PAGE HEADER ──────────────────────────────────────── -->
+  <section class="page-header">
+    <div class="page-header-inner">
+      <p class="eyebrow reveal">IRL Flagship Program</p>
+      <h1 class="reveal reveal-delay-1">Because love, legacy,<br>and truth can't wait.</h1>
+      <p class="page-header-sub reveal reveal-delay-2">
+        Guided family conversations that bring peace to life's transitions, preserve your stories, and prepare the next generation — while we're still here.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ─── WHAT IS IT ───────────────────────────────────────── -->
+  <section style="background: var(--white);">
+    <div class="page-section">
+      <div class="wwsh-intro-grid">
+
+        <div>
+          <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">What Is While We're Still Here™?</p>
+          <h2 class="reveal reveal-delay-1">Silence is the quiet oppressor in many families.</h2>
+          <p class="reveal reveal-delay-2">
+            The topics we avoid are often the ones that matter most. While We're Still Here™ is your invitation to face those conversations now: about values, transitions, love, loss, and what it means to belong.
+          </p>
+          <p class="reveal reveal-delay-2">
+            Through storytelling and guided dialogue, families gain the courage and structure to talk about the things that bring peace, closure, and connection — while we still can.
+          </p>
+          <p class="reveal reveal-delay-3" style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: rgba(5,45,63,0.55);">
+            Because preparing for tomorrow starts with honest conversation today.
+          </p>
+        </div>
+
+        <div class="wwsh-benefits">
+          <div class="wwsh-benefit reveal reveal-delay-1">
+            <h4>Have the hard conversations</h4>
+            <p>About health, legacy, and end-of-life care with grace and intention.</p>
+          </div>
+          <div class="wwsh-benefit reveal reveal-delay-2">
+            <h4>Preserve your family's stories</h4>
+            <p>And values for generations to come.</p>
+          </div>
+          <div class="wwsh-benefit reveal reveal-delay-3">
+            <h4>Find peace now, not later</h4>
+            <p>These conversations aren't just about loss. They're about love, living legacy, and leaving nothing unsaid.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── FIVE PHASES ──────────────────────────────────────── -->
+  <div class="phases-band">
+    <div style="max-width: var(--max-width); margin: 0 auto;">
+      <p class="eyebrow reveal">The Experience</p>
+      <h2 class="reveal reveal-delay-1">Five Universal Phases</h2>
+      <p class="sub reveal reveal-delay-2">Each experience is designed to honor truth, deepen connection, and build peace that lasts.</p>
+
+      <div class="phases-list">
+
+        <div class="phase-item reveal">
+          <div class="phase-num">I</div>
+          <div class="phase-content">
+            <h3>Gather</h3>
+            <p>Create a safe, sacred space for honest conversation — whether it's one family in a living room or many families joining virtually.</p>
+          </div>
+        </div>
+
+        <div class="phase-item reveal reveal-delay-1">
+          <div class="phase-num">II</div>
+          <div class="phase-content">
+            <h3>Share</h3>
+            <p>Speak what often goes unsaid. Families exchange stories, dream together, voice hopes and fears, and share wishes for how they want to live, love, and transition.</p>
+          </div>
+        </div>
+
+        <div class="phase-item reveal reveal-delay-2">
+          <div class="phase-num">III</div>
+          <div class="phase-content">
+            <h3>Align</h3>
+            <p>Find clarity around values, health wishes, estate hopes, and relational intentions — ensuring everyone understands what truly matters most.</p>
+          </div>
+        </div>
+
+        <div class="phase-item reveal reveal-delay-3">
+          <div class="phase-num">IV</div>
+          <div class="phase-content">
+            <h3>Preserve</h3>
+            <p>Capture the moment. Families receive guided frameworks, recordings, and tangible resources to document and carry forward what was shared.</p>
+          </div>
+        </div>
+
+        <div class="phase-item reveal reveal-delay-4">
+          <div class="phase-num">V</div>
+          <div class="phase-content">
+            <h3>Integrate</h3>
+            <p>Turn intention into continuity — with next steps, rituals, and plans that strengthen family connection beyond the session itself.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── THREE FORMATS ────────────────────────────────────── -->
+  <section style="background: var(--white);">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">Choose Your Format</p>
+      <h2 class="reveal reveal-delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); color: var(--dusk); line-height: 1.1;">Three Program Formats</h2>
+
+      <div class="formats-grid">
+
+        <div class="format-card reveal reveal-delay-1">
+          <p class="eyebrow">In-Person</p>
+          <h3>Family Retreat</h3>
+          <p>A full-day immersive experience held in your home or chosen location. Facilitated by founder Lauren Rosa Miller, this retreat brings generations together for storytelling, values alignment, and intentional dialogue that helps families name what matters most and strengthen what will last.</p>
+          <div class="format-price">Starting at $5,000</div>
+        </div>
+
+        <div class="format-card reveal reveal-delay-2">
+          <p class="eyebrow">Virtual</p>
+          <h3>Family Experience</h3>
+          <p>A private, three-part virtual series tailored to your family's needs. Each session is personally guided by Lauren Rosa Miller, helping families preserve their stories, align values, and discuss transitions that bring both peace and clarity.</p>
+          <div class="format-price">$1,500 – $3,000</div>
+        </div>
+
+        <div class="format-card reveal reveal-delay-3">
+          <p class="eyebrow">Community</p>
+          <h3>The Guided Gathering</h3>
+          <p>A 90-minute virtual or in-person collective experience that brings multiple families together for reflection and guided conversation. Led by Lauren Rosa Miller, the Guided Gathering introduces families to the core philosophy of While We're Still Here™ — replacing silence with shared understanding.</p>
+          <div class="format-price">$150 per family <span style="font-size: 0.82rem; font-weight: 400; color: rgba(5,45,63,0.45);">(limited to 12 families)</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── IS THIS FOR YOU ──────────────────────────────────── -->
+  <div class="for-you-band">
+    <div style="max-width: var(--max-width); margin: 0 auto;">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">Who This Is For</p>
+      <h2 class="reveal reveal-delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--dusk); line-height: 1.1; margin-bottom: 0.5rem;">This is for your family if…</h2>
+
+      <div class="for-you-grid">
+        <div class="for-you-item reveal reveal-delay-1">You want to honor your elders while they're still here</div>
+        <div class="for-you-item reveal reveal-delay-1">You want your children to know where they come from</div>
+        <div class="for-you-item reveal reveal-delay-2">You're navigating family land, a business, or inheritance</div>
+        <div class="for-you-item reveal reveal-delay-2">You want peace of mind knowing your family is aligned</div>
+        <div class="for-you-item reveal reveal-delay-3">You sense stories are going unheard</div>
+        <div class="for-you-item reveal reveal-delay-3">You want clarity for what matters next — health, finances, values, relationships</div>
+        <div class="for-you-item reveal reveal-delay-4">You don't want regrets about things left unsaid</div>
+        <div class="for-you-item reveal reveal-delay-4">You believe love, unity, and preparation are part of your legacy</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── FOUNDER QUOTE ────────────────────────────────────── -->
+  <div class="founder-quote-band">
+    <blockquote class="reveal">
+      "This experience is about giving families peace and language — to say what needs to be said while everyone is still here to hear it."
+    </blockquote>
+    <cite class="reveal reveal-delay-1">— Lauren Rosa Miller, Founder</cite>
+  </div>
+
+
+  <!-- ─── CTA ──────────────────────────────────────────────── -->
+  <section style="background: var(--clay); padding: 6rem 3.5rem; text-align: center;">
+    <p class="eyebrow reveal" style="color: rgba(255,255,255,0.65); margin-bottom: 1rem;">Begin Your Journey</p>
+    <h2 class="reveal reveal-delay-1" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 600; color: var(--white); line-height: 1.1; margin-bottom: 1.25rem;">
+      Ready to start the conversation?
+    </h2>
+    <p class="reveal reveal-delay-2" style="font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.8;">
+      Take the free Legacy Snapshot to see where your family stands — then we'll discuss which format is right for you.
+    </p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener"
+         class="btn reveal reveal-delay-3"
+         style="background: var(--white); color: var(--clay); border-color: var(--white); font-size: 1rem; padding: 1rem 2.5rem;">
+        Take the Free Snapshot
+      </a>
+      <a href="contact.html"
+         class="btn btn-ghost-light reveal reveal-delay-3"
+         style="font-size: 1rem; padding: 1rem 2.5rem;">
+        Inquire About a Session
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-logo">In the Room with Legacy™</a>
+        <p class="footer-tagline">"The family is the first institution."</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X / Twitter">X</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">About</p>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="founder-letter.html">Letter from Our Founder</a></li>
+          <li><a href="partnership-pathways.html">Partnership Pathways</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Programs</p>
+        <ul>
+          <li><a href="programs.html">All Programs</a></li>
+          <li><a href="while-were-still-here.html">While We're Still Here</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Platform</p>
+        <ul>
+          <li><a href="legacy-insights.html">Legacy Insights</a></li>
+          <li><a href="legacy-assessment.html">Legacy Assessment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 In the Room with Legacy Inc. All rights reserved.</p>
+      <p class="footer-ein">EIN 99-4135483<br>While We're Still Here™ is a registered nonprofit initiative</p>
+    </div>
+  </footer>
+
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+      item.querySelector('.nav-item-trigger').addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open'));
+    });
+
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function closeMobile() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.contains('open');
+      if (open) { closeMobile(); }
+      else { hamburger.classList.add('active'); mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
