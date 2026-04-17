@@ -3,15 +3,253 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Legacy Insights, Tools & Resources — In the Room with Legacy™</title>
+  <title>Legacy Insights, Tools &amp; Resources — In the Room with Legacy™</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ── Filter bar ───────────────────────────────────── */
+    .filter-section {
+      background: var(--white);
+      border-bottom: 1px solid var(--stone);
+      padding: 2rem 3.5rem;
+      position: sticky;
+      top: 60px;
+      z-index: 50;
+    }
+    .filter-row {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .filter-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(5,45,63,0.38);
+    }
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .filter-pill {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.35rem 0.9rem;
+      border-radius: 99px;
+      border: 1.5px solid var(--stone);
+      background: transparent;
+      color: rgba(5,45,63,0.6);
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .filter-pill:hover {
+      border-color: var(--clay);
+      color: var(--clay);
+    }
+    .filter-pill.active {
+      background: var(--clay);
+      border-color: var(--clay);
+      color: var(--white);
+    }
+
+    /* ── Intro text ───────────────────────────────────── */
+    .resources-intro {
+      font-size: 1rem;
+      color: rgba(5,45,63,0.65);
+      line-height: 1.85;
+      max-width: 760px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── Resource cards grid ──────────────────────────── */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .resource-card {
+      background: var(--white);
+      border: 1px solid var(--stone);
+      border-radius: 10px;
+      padding: 2rem 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .resource-card:hover {
+      box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    .resource-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .resource-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.65rem;
+      border-radius: 99px;
+    }
+    .badge-featured { background: rgba(154,74,11,0.1); color: var(--clay); }
+    .badge-type     { background: rgba(5,45,63,0.07);  color: rgba(5,45,63,0.6); }
+    .badge-audience { background: rgba(5,45,63,0.05);  color: rgba(5,45,63,0.5); }
+
+    .resource-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--dusk);
+      line-height: 1.2;
+    }
+    .resource-card p {
+      font-size: 0.9rem;
+      color: rgba(5,45,63,0.62);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .resource-topic {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(5,45,63,0.35);
+    }
+    .resource-card .btn {
+      align-self: flex-start;
+      margin-top: 0.25rem;
+      font-size: 0.8rem;
+      padding: 0.6rem 1.3rem;
+    }
+
+    /* ── No results ───────────────────────────────────── */
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 4rem 2rem;
+      grid-column: 1 / -1;
+    }
+    .no-results h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--dusk);
+      margin-bottom: 0.5rem;
+    }
+    .no-results p {
+      font-size: 0.9rem;
+      color: rgba(5,45,63,0.5);
+    }
+    .no-results.visible { display: block; }
+
+    /* ── Curated external resources ───────────────────── */
+    .curated-band {
+      background: var(--parchment);
+      padding: 6rem 3.5rem;
+    }
+    .curated-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+      max-width: var(--max-width);
+    }
+    .curated-card {
+      background: var(--white);
+      border: 1px solid rgba(5,45,63,0.08);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: box-shadow 0.22s;
+    }
+    .curated-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+    .curated-source {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clay);
+      opacity: 0.85;
+    }
+    .curated-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dusk);
+      line-height: 1.25;
+    }
+    .curated-card p {
+      font-size: 0.88rem;
+      color: rgba(5,45,63,0.62);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .curated-card a {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--clay);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      align-self: flex-start;
+      margin-top: 0.25rem;
+    }
+    .curated-card a:hover { text-decoration: underline; }
+
+    /* ── Stay connected ───────────────────────────────── */
+    .stay-connected {
+      background: var(--dusk);
+      padding: 5rem 3.5rem;
+      text-align: center;
+    }
+    .stay-connected h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .stay-connected p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 440px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .filter-section   { padding: 1.5rem; top: 56px; }
+      .filter-row       { gap: 1.25rem; }
+      .resources-grid   { grid-template-columns: 1fr; }
+      .curated-band     { padding: 4rem 1.5rem; }
+      .curated-grid     { grid-template-columns: 1fr; }
+      .stay-connected   { padding: 4rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
   <nav id="nav" class="scrolled">
     <a href="index.html" class="nav-logo">In the Room with Legacy™</a>
     <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
@@ -49,76 +287,219 @@
         </div>
       </li>
       <li class="nav-item"><a href="contact.html">Contact</a></li>
-      <li class="nav-item"><a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="nav-cta-link">Take Your Legacy Snapshot</a></li>
+      <li class="nav-item">
+        <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="nav-cta-link">Take Your Legacy Snapshot</a>
+      </li>
     </ul>
   </nav>
 
   <!-- Mobile menu -->
   <div class="nav-mobile-overlay" id="mobile-menu">
-    <a href="index.html"            onclick="closeMobile()">Home</a>
-    <a href="legacy-insights.html"  onclick="closeMobile()">Legacy Insights</a>
-    <a href="legacy-assessment.html" onclick="closeMobile()">Legacy Assessment</a>
-    <a href="irl-advisor.html"      onclick="closeMobile()">IRL Advisor</a>
-    <a href="founding-circle.html"  onclick="closeMobile()">Founding Circle</a>
-    <a href="contact.html"          onclick="closeMobile()">Contact</a>
-    <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" class="mobile-cta">Take Your Legacy Snapshot →</a>
+    <a href="about.html"                onclick="closeMobile()">About Us</a>
+    <a href="founder-letter.html"       onclick="closeMobile()">Founder Letter</a>
+    <a href="partnership-pathways.html" onclick="closeMobile()">Partnership Pathways</a>
+    <a href="faq.html"                  onclick="closeMobile()">FAQ</a>
+    <a href="contact.html"              onclick="closeMobile()">Contact</a>
+    <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" onclick="closeMobile()" class="mobile-cta">Take Your Legacy Snapshot →</a>
   </div>
 
-  <!-- PAGE HEADER -->
+
+  <!-- ─── PAGE HEADER ──────────────────────────────────────── -->
   <section class="page-header">
     <div class="page-header-inner">
-      <p class="eyebrow reveal">Programs &amp; Resources</p>
-      <h1 class="reveal reveal-delay-1">Legacy Insights, Tools &amp; Resources</h1>
+      <p class="eyebrow reveal">Tools &amp; Resources</p>
+      <h1 class="reveal reveal-delay-1">Legacy Insights,<br>Tools &amp; Resources</h1>
       <p class="page-header-sub reveal reveal-delay-2">
-        Practical tools, curated insights, and frameworks that help mission-oriented families build lasting infrastructure — while everyone is still here.
+        A living library of guides, tools, and reflections to help families build and sustain legacy, across every stage and generation.
       </p>
     </div>
   </section>
 
-  <!-- INTRO SECTION -->
-  <section style="background: var(--white);">
-    <div class="page-section">
-      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 1rem;">What's Inside</p>
-      <h2 class="reveal reveal-delay-1">Everything your family needs to get started.</h2>
-      <p class="reveal reveal-delay-2">
-        IRL has curated a growing library of tools, templates, and editorial content designed specifically for families who are serious about building a living legacy. From governance frameworks to guided reflection prompts — these resources meet your family where it is.
-      </p>
-      <div class="inner-card-grid">
-        <div class="inner-card reveal">
-          <p class="eyebrow">Insights</p>
-          <h3>Editorial &amp; Perspectives</h3>
-          <p>Long-form pieces on family governance, generational wealth, and the culture of legacy — written for families, not accountants.</p>
-          <a href="javascript:void(0)" class="btn btn-ghost-dusk">Explore →</a>
-        </div>
-        <div class="inner-card reveal reveal-delay-1">
-          <p class="eyebrow">Tools</p>
-          <h3>Frameworks &amp; Templates</h3>
-          <p>Downloadable tools your family can use immediately — values worksheets, meeting agendas, governance charters, and more.</p>
-          <a href="javascript:void(0)" class="btn btn-ghost-dusk">Browse Tools →</a>
-        </div>
-        <div class="inner-card reveal reveal-delay-2">
-          <p class="eyebrow">Resources</p>
-          <h3>Curated Reading List</h3>
-          <p>Books, reports, and external resources vetted by the IRL team — organized by topic and family stage.</p>
-          <a href="javascript:void(0)" class="btn btn-ghost-dusk">View List →</a>
+
+  <!-- ─── FILTER BAR ───────────────────────────────────────── -->
+  <div class="filter-section">
+    <div class="filter-row">
+
+      <div class="filter-group">
+        <p class="filter-label">Content Type</p>
+        <div class="filter-pills" id="filter-type">
+          <button class="filter-pill active" data-filter="type" data-value="all">All</button>
+          <button class="filter-pill" data-filter="type" data-value="article">Articles &amp; Essays</button>
+          <button class="filter-pill" data-filter="type" data-value="guide">Guides &amp; Frameworks</button>
+          <button class="filter-pill" data-filter="type" data-value="worksheet">Worksheets &amp; Templates</button>
+          <button class="filter-pill" data-filter="type" data-value="tool">Tools &amp; Checklists</button>
+          <button class="filter-pill" data-filter="type" data-value="video">Videos &amp; Webinars</button>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- PARCHMENT SECTION -->
-  <div class="page-section-full">
-    <div class="page-section">
-      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 1rem;">Featured Resource</p>
-      <h2 class="reveal reveal-delay-1">Start with the Legacy Snapshot.</h2>
-      <p class="reveal reveal-delay-2">
-        Before diving into any tool or framework, the Legacy Snapshot gives you a baseline — a clear picture of where your family already has infrastructure and where the gaps are. It's free, takes 15 minutes, and changes the conversation.
-      </p>
-      <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" class="btn btn-clay reveal reveal-delay-3" style="margin-top: 0.5rem;">Take the Free Snapshot</a>
+      <div class="filter-group">
+        <p class="filter-label">Audience</p>
+        <div class="filter-pills" id="filter-audience">
+          <button class="filter-pill active" data-filter="audience" data-value="all">All</button>
+          <button class="filter-pill" data-filter="audience" data-value="founders">Founders</button>
+          <button class="filter-pill" data-filter="audience" data-value="heirs">Heirs</button>
+          <button class="filter-pill" data-filter="audience" data-value="families">Families</button>
+          <button class="filter-pill" data-filter="audience" data-value="cousins">Cousins &amp; Collectives</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <p class="filter-label">Topics</p>
+        <div class="filter-pills" id="filter-topic">
+          <button class="filter-pill active" data-filter="topic" data-value="all">All</button>
+          <button class="filter-pill" data-filter="topic" data-value="family-legacy">Family Legacy</button>
+          <button class="filter-pill" data-filter="topic" data-value="next-gen">Next-Gen Stewardship</button>
+          <button class="filter-pill" data-filter="topic" data-value="storytelling">Storytelling &amp; Culture</button>
+          <button class="filter-pill" data-filter="topic" data-value="economic">Economic Empowerment</button>
+          <button class="filter-pill" data-filter="topic" data-value="transitions">Transitions &amp; Healing</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- FOOTER -->
+
+  <!-- ─── RESOURCES ────────────────────────────────────────── -->
+  <section style="background: var(--white);">
+    <div class="page-section">
+
+      <p class="resources-intro reveal">
+        Explore frameworks, stories, and tools created by In the Room with Legacy™ — along with curated insights from thought leaders, family enterprises, and communities around the world. Whether you're the founder of your family, a successor, or a family steward, you'll find something here that helps make legacy real in your everyday life.
+      </p>
+
+      <div class="resources-grid" id="resources-grid">
+
+        <!-- Card 1: AI Tool -->
+        <div class="resource-card reveal"
+             data-type="tool"
+             data-audience="families"
+             data-topic="family-legacy">
+          <div class="resource-badges">
+            <span class="resource-badge badge-featured">Featured</span>
+            <span class="resource-badge badge-type">Tool</span>
+          </div>
+          <h3>AI-Powered Legacy Assessment Tool</h3>
+          <p>The first AI-powered tool that helps families measure where they are, map what matters most, and take real steps to protect their legacy across generations.</p>
+          <a href="legacy-assessment.html" class="btn btn-clay">Request Access to the Tool</a>
+        </div>
+
+        <!-- Card 2: Conversation Starter Kit -->
+        <div class="resource-card reveal reveal-delay-1"
+             data-type="worksheet"
+             data-audience="families"
+             data-topic="transitions">
+          <div class="resource-badges">
+            <span class="resource-badge badge-featured">Featured</span>
+            <span class="resource-badge badge-type">Worksheet</span>
+            <span class="resource-badge badge-audience">Families</span>
+          </div>
+          <h3>The Legacy Conversation Starter Kit</h3>
+          <p>A comprehensive guide with prompts, questions, and frameworks to facilitate meaningful conversations about legacy within your family.</p>
+          <p class="resource-topic">Transitions &amp; Healing</p>
+          <a href="contact.html" class="btn btn-ghost-dusk">Download Kit</a>
+        </div>
+
+        <!-- Card 3: Parenting a Parent -->
+        <div class="resource-card reveal reveal-delay-2"
+             data-type="guide"
+             data-audience="families"
+             data-topic="transitions">
+          <div class="resource-badges">
+            <span class="resource-badge badge-featured">Featured</span>
+            <span class="resource-badge badge-type">Guide</span>
+            <span class="resource-badge badge-audience">Families</span>
+          </div>
+          <h3>Parenting a Parent: A Guide for Adult Children</h3>
+          <p>Navigate the complex transition from child to caregiver with practical strategies, emotional support, and planning tools.</p>
+          <p class="resource-topic">Transitions &amp; Healing</p>
+          <a href="contact.html" class="btn btn-ghost-dusk">Read Guide</a>
+        </div>
+
+        <!-- Card 4: Ethical Nepotism -->
+        <div class="resource-card reveal reveal-delay-3"
+             data-type="article"
+             data-audience="heirs"
+             data-topic="family-legacy next-gen">
+          <div class="resource-badges">
+            <span class="resource-badge badge-featured">Featured</span>
+            <span class="resource-badge badge-type">Article</span>
+            <span class="resource-badge badge-audience">Heirs</span>
+          </div>
+          <h3>The Case for Ethical Nepotism™</h3>
+          <p>How families can create opportunity for their own while maintaining integrity and excellence. Redefining inheritance as responsibility, not entitlement.</p>
+          <p class="resource-topic">Family Legacy &nbsp;·&nbsp; Next-Gen Stewardship</p>
+          <a href="contact.html" class="btn btn-ghost-dusk">Read Article</a>
+        </div>
+
+      </div>
+
+      <!-- No results fallback -->
+      <div class="no-results" id="no-results">
+        <h3>No matching resources</h3>
+        <p>Try adjusting your search or filters to find what you're looking for.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── CURATED EXTERNAL RESOURCES ──────────────────────── -->
+  <div class="curated-band">
+    <div style="max-width: var(--max-width); margin: 0 auto;">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">From the Field</p>
+      <h2 class="reveal reveal-delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--dusk); line-height: 1.1;">Curated External Resources</h2>
+      <p class="reveal reveal-delay-2" style="font-size: 1rem; color: rgba(5,45,63,0.65); line-height: 1.85; max-width: 580px; margin-top: 0.75rem;">
+        Insights from thought leaders, family enterprises, and trusted institutions — curated by the IRL team.
+      </p>
+
+      <div class="curated-grid">
+
+        <div class="curated-card reveal reveal-delay-1">
+          <p class="curated-source">via Egon Zehnder</p>
+          <h4>Family Business Governance: A Guide for Lasting Success</h4>
+          <p>A comprehensive framework for establishing governance structures that support family business continuity across generations.</p>
+          <a href="javascript:void(0)">Read Article →</a>
+        </div>
+
+        <div class="curated-card reveal reveal-delay-2">
+          <p class="curated-source">via Bessemer Trust</p>
+          <h4>The Power of Family Stories</h4>
+          <p>How storytelling can strengthen family bonds, preserve values, and create a sense of shared identity and purpose.</p>
+          <a href="javascript:void(0)">Read Article →</a>
+        </div>
+
+        <div class="curated-card reveal reveal-delay-3">
+          <p class="curated-source">via Remento Journal</p>
+          <h4>Preserving Family Legacy: Heather K.'s Remento Review</h4>
+          <p>A personal account of using digital tools to capture and preserve family stories for future generations.</p>
+          <a href="javascript:void(0)">Read Article →</a>
+        </div>
+
+        <div class="curated-card reveal reveal-delay-4">
+          <p class="curated-source">via Lifebook Memoirs</p>
+          <h4>Why Telling Our Family Stories Is So Beneficial</h4>
+          <p>Research-backed insights on how family storytelling impacts emotional well-being, resilience, and intergenerational connections.</p>
+          <a href="javascript:void(0)">Read Article →</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── STAY CONNECTED ───────────────────────────────────── -->
+  <div class="stay-connected">
+    <h2 class="reveal">Stay in the Room</h2>
+    <p class="reveal reveal-delay-1">Get new tools, stories, and insights sent directly to your inbox.</p>
+    <a href="#newsletter" class="btn reveal reveal-delay-2"
+       style="background: var(--white); color: var(--clay); border-color: var(--white); font-size: 1rem; padding: 1rem 2.5rem;"
+       onclick="window.location='index.html#newsletter'">
+      Join the Room →
+    </a>
+  </div>
+
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
@@ -131,26 +512,26 @@
         </div>
       </div>
       <div class="footer-col">
+        <p class="footer-col-head">About</p>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="founder-letter.html">Letter from Our Founder</a></li>
+          <li><a href="partnership-pathways.html">Partnership Pathways</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Programs</p>
+        <ul>
+          <li><a href="programs.html">All Programs</a></li>
+          <li><a href="while-were-still-here.html">While We're Still Here™</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
         <p class="footer-col-head">Platform</p>
         <ul>
           <li><a href="legacy-insights.html">Legacy Insights</a></li>
           <li><a href="legacy-assessment.html">Legacy Assessment</a></li>
-          <li><a href="javascript:void(0)">Resources</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <p class="footer-col-head">Advisory</p>
-        <ul>
-          <li><a href="irl-advisor.html">IRL Advisors</a></li>
-          <li><a href="founding-circle.html">Founding Circle</a></li>
-          <li><a href="contact.html">Partner with IRL</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <p class="footer-col-head">Company</p>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="javascript:void(0)">Our Mission</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -161,11 +542,10 @@
     </div>
   </footer>
 
-  <script>
-    // Nav always solid on inner pages
-    document.getElementById('nav').classList.add('scrolled');
 
-    // Dropdowns
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    /* ── Nav ─────────────────────────────────────────────────── */
     document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
       item.querySelector('.nav-item-trigger').addEventListener('click', (e) => {
         e.stopPropagation();
@@ -178,7 +558,7 @@
       document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open'));
     });
 
-    // Mobile menu
+    /* ── Mobile menu ─────────────────────────────────────────── */
     const hamburger  = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
     function closeMobile() {
@@ -188,15 +568,53 @@
     }
     hamburger.addEventListener('click', () => {
       const open = mobileMenu.classList.contains('open');
-      open ? closeMobile() : (hamburger.classList.add('active'), mobileMenu.classList.add('open'), document.body.style.overflow = 'hidden');
+      if (open) { closeMobile(); }
+      else { hamburger.classList.add('active'); mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; }
     });
 
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer  = new IntersectionObserver((entries) => {
+    /* ── Scroll reveal ───────────────────────────────────────── */
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.1 });
-    revealEls.forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── Filter system ───────────────────────────────────────── */
+    let activeFilters = { type: 'all', audience: 'all', topic: 'all' };
+
+    document.querySelectorAll('.filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        const filterGroup = pill.dataset.filter;
+        const value       = pill.dataset.value;
+
+        // Update active pill in this group
+        document.querySelectorAll(`[data-filter="${filterGroup}"]`).forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        activeFilters[filterGroup] = value;
+        applyFilters();
+      });
+    });
+
+    function applyFilters() {
+      const cards   = document.querySelectorAll('.resource-card');
+      let anyVisible = false;
+
+      cards.forEach(card => {
+        const typeMatch     = activeFilters.type     === 'all' || card.dataset.type.includes(activeFilters.type);
+        const audienceMatch = activeFilters.audience === 'all' || card.dataset.audience.includes(activeFilters.audience);
+        const topicMatch    = activeFilters.topic    === 'all' || card.dataset.topic.includes(activeFilters.topic);
+
+        if (typeMatch && audienceMatch && topicMatch) {
+          card.style.display = '';
+          anyVisible = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('no-results').classList.toggle('visible', !anyVisible);
+    }
   </script>
+
 </body>
 </html>
