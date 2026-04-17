@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partnership Pathways — In the Room with Legacy™</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Partnership card layout ── */
+    .pp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 900px) { .pp-grid { grid-template-columns: 1fr; } }
+
+    .pp-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      border-top: 3px solid var(--clay);
+    }
+
+    .pp-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(154,74,11,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clay);
+      flex-shrink: 0;
+    }
+
+    .pp-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--dusk);
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .pp-card > p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(5,45,63,0.72);
+      margin: 0;
+    }
+
+    /* Bullet list */
+    .pp-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+    }
+    .pp-list li {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: rgba(5,45,63,0.68);
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .pp-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--clay);
+      font-weight: 600;
+    }
+
+    /* "We Partner With" line */
+    .pp-partners {
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(5,45,63,0.08);
+      margin-top: auto;
+    }
+    .pp-partners strong {
+      display: block;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 0.4rem;
+    }
+    .pp-partners span {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: rgba(5,45,63,0.6);
+    }
+
+    /* Intro paragraph */
+    .pp-intro {
+      max-width: 780px;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: rgba(5,45,63,0.72);
+      margin-bottom: 0;
+    }
+
+    /* CTA band */
+    .pp-cta {
+      background: var(--dusk);
+      padding: 5rem 3.5rem;
+      text-align: center;
+    }
+    .pp-cta .eyebrow { color: var(--clay); margin-bottom: 1rem; }
+    .pp-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--parchment);
+      margin-bottom: 0.5rem;
+    }
+    .pp-cta p {
+      font-size: 1rem;
+      color: rgba(237,224,204,0.65);
+      margin-bottom: 2rem;
+    }
+    .pp-cta .pp-note {
+      max-width: 600px;
+      margin: 2rem auto 0;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: rgba(237,224,204,0.45);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav" class="scrolled">
+    <a href="index.html" class="nav-logo">In the Room with Legacy™</a>
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="desktop-nav">
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">About <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="about.html">About Us</a>
+          <a href="founder-letter.html">Letter from Our Founder</a>
+          <a href="partnership-pathways.html">Partnership Pathways</a>
+          <a href="faq.html">Frequently Asked Questions</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Programs <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Tools &amp; Resources <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">IRL Advisors <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="irl-advisor.html">IRL Advisor</a>
+          <a href="founding-circle.html">Founding Circle</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="contact.html">Contact</a></li>
+      <li class="nav-item"><a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="nav-cta-link">Take Your Legacy Snapshot</a></li>
+    </ul>
+  </nav>
+
+  <div class="nav-mobile-overlay" id="mobile-menu">
+    <a href="index.html"                onclick="closeMobile()">Home</a>
+    <a href="about.html"                onclick="closeMobile()">About Us</a>
+    <a href="founder-letter.html"       onclick="closeMobile()">Letter from Our Founder</a>
+    <a href="partnership-pathways.html" onclick="closeMobile()">Partnership Pathways</a>
+    <a href="faq.html"                  onclick="closeMobile()">FAQ</a>
+    <a href="contact.html"              onclick="closeMobile()">Contact</a>
+    <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" class="mobile-cta">Take Your Legacy Snapshot →</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-inner">
+      <p class="eyebrow reveal">Work With Us</p>
+      <h1 class="reveal reveal-delay-1">Partnership Pathways</h1>
+      <p class="page-header-sub reveal reveal-delay-2">
+        Create meaningful impact through strategic collaboration with In the Room with Legacy™.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTRO + CARDS -->
+  <section style="background: var(--parchment);">
+    <div class="page-section">
+      <p class="pp-intro reveal">
+        We partner with organizations committed to strengthening families, preserving heritage, and building multigenerational wealth. As IRL builds the first culturally rooted Legacy Operating System (currently in beta), our partnerships leverage both our platform and our nonprofit mission to make legacy accessible at scale.
+      </p>
+
+      <div class="pp-grid">
+
+        <!-- Card 1: Content Collaborations -->
+        <div class="pp-card reveal">
+          <div class="pp-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <p class="eyebrow" style="color: var(--clay); margin: 0;">Pathway 01</p>
+          <h3>Content Collaborations</h3>
+          <p>Co-create powerful narratives that amplify legacy stories and cultural impact.</p>
+          <ul class="pp-list">
+            <li>Co-created storytelling campaigns with brands, media outlets, and cultural institutions</li>
+            <li>Co-produced short films or podcast series highlighting legacy families</li>
+            <li>Collaborative research projects on family legacy and succession trends</li>
+            <li>Custom content development for institutions serving multi-generational families</li>
+            <li>Media partnerships amplifying diverse perspectives on legacy building</li>
+          </ul>
+          <div class="pp-partners">
+            <strong>We Partner With</strong>
+            <span>Media platforms, cultural institutions, philanthropic foundations, universities, and organizations working on intergenerational impact.</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Program Partnerships -->
+        <div class="pp-card reveal reveal-delay-1">
+          <div class="pp-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <p class="eyebrow" style="color: var(--clay); margin: 0;">Pathway 02</p>
+          <h3>Program Partnerships</h3>
+          <p>Design and deliver transformative learning experiences that strengthen family legacies.</p>
+          <ul class="pp-list">
+            <li>Co-hosted retreats, workshops, or labs blending IRL methodology with partner expertise</li>
+            <li>Universities or foundations sponsoring While We're Still Here cohorts</li>
+            <li>Corporate-sponsored legacy programs for employee resource groups</li>
+            <li>Co-branded assessment tools for financial institutions</li>
+            <li>Legacy planning modules integrated into family office service offerings</li>
+          </ul>
+          <div class="pp-partners">
+            <strong>We Partner With</strong>
+            <span>Nonprofits, universities, corporations, churches, foundations, and community-based organizations.</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Strategic Alliances -->
+        <div class="pp-card reveal reveal-delay-2">
+          <div class="pp-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <p class="eyebrow" style="color: var(--clay); margin: 0;">Pathway 03</p>
+          <h3>Strategic Alliances</h3>
+          <p>Build long-term collaborative relationships that create systemic impact.</p>
+          <ul class="pp-list">
+            <li>Enterprise licensing of the IRL Legacy OS (beta) for advisors, planners, and institutions</li>
+            <li>Long-term collaborations with institutions, universities, financial partners, or civic orgs</li>
+            <li>Municipal partnerships integrating legacy assessments into family business initiatives</li>
+            <li>Cultural preservation organizations adopting IRL methodologies</li>
+            <li>Foundations supporting intergenerational wealth building in underserved communities</li>
+            <li>Joint ventures developing technology solutions for family governance and storytelling</li>
+          </ul>
+          <div class="pp-partners">
+            <strong>We Partner With</strong>
+            <span>Family offices, financial institutions, estate attorneys, government agencies, foundations, and enterprise-level organizations.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="pp-cta">
+    <p class="eyebrow reveal">Get in Touch</p>
+    <h2 class="reveal reveal-delay-1">Interested in Partnering?</h2>
+    <p class="reveal reveal-delay-2">Let's build something powerful together.</p>
+    <a href="contact.html" class="btn btn-clay reveal reveal-delay-3" style="font-size: 1rem; padding: 1rem 2.5rem;">
+      Contact Us
+    </a>
+    <p class="pp-note reveal reveal-delay-4">
+      Partnership investments help sustain our mission and expand access to legacy education, tools, and culturally informed support for families across generations.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-logo">In the Room with Legacy™</a>
+        <p class="footer-tagline">"The family is the first institution."</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X / Twitter">X</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">About</p>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="founder-letter.html">Letter from Our Founder</a></li>
+          <li><a href="partnership-pathways.html">Partnership Pathways</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Advisory</p>
+        <ul>
+          <li><a href="irl-advisor.html">IRL Advisors</a></li>
+          <li><a href="founding-circle.html">Founding Circle</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Platform</p>
+        <ul>
+          <li><a href="legacy-insights.html">Legacy Insights</a></li>
+          <li><a href="legacy-assessment.html">Legacy Assessment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 In the Room with Legacy Inc. All rights reserved.</p>
+      <p class="footer-ein">EIN 99-4135483<br>While We're Still Here™ is a registered nonprofit initiative</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('nav').classList.add('scrolled');
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+      item.querySelector('.nav-item-trigger').addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+    document.addEventListener('click', () => document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open')));
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function closeMobile() { hamburger.classList.remove('active'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+    hamburger.addEventListener('click', () => { const open = mobileMenu.classList.contains('open'); open ? closeMobile() : (hamburger.classList.add('active'), mobileMenu.classList.add('open'), document.body.style.overflow = 'hidden'); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
