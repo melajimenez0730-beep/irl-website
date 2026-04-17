@@ -550,18 +550,6 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
     revealEls.forEach(el => revealObserver.observe(el));
 
-    /* ── Program section animation — fires on scroll (mobile) or snap (desktop) */
-    let programAnimFired = false;
-    const programSectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !programAnimFired) {
-          programAnimFired = true;
-          triggerProgramAnim();
-        }
-      });
-    }, { threshold: 0.2 });
-    programSectionObserver.observe(programSection);
-
     /* ── Full Page Snap Scroll (all sections) ───────────────── */
     const snapSections = Array.from(document.querySelectorAll('section, footer'));
     let isSnapping     = false;
@@ -591,6 +579,18 @@
       void programSection.offsetWidth; // second reflow — locks in the delays
       programSection.classList.add('in-view');
     }
+
+    /* ── Program section animation via scroll (mobile) or snap (desktop) */
+    let programAnimFired = false;
+    const programSectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !programAnimFired) {
+          programAnimFired = true;
+          triggerProgramAnim();
+        }
+      });
+    }, { threshold: 0.2 });
+    programSectionObserver.observe(programSection);
 
     function goToSection(index) {
       if (isSnapping) return;
