@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — In the Room with Legacy™</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .faq-list { max-width: 760px; margin: 3rem auto 0; display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid var(--stone); }
+    .faq-item:first-child { border-top: 1px solid var(--stone); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.75rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      gap: 1rem;
+    }
+    .faq-question span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--dusk);
+      line-height: 1.25;
+    }
+    .faq-icon {
+      font-size: 1.4rem;
+      color: var(--clay);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 300;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 400px; }
+    .faq-answer p {
+      font-size: 1rem;
+      color: rgba(5,45,63,0.68);
+      line-height: 1.85;
+      padding-bottom: 1.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav" class="scrolled">
+    <a href="index.html" class="nav-logo">In the Room with Legacy™</a>
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="desktop-nav">
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">About <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="about.html">About Us</a>
+          <a href="founder-letter.html">Letter from Our Founder</a>
+          <a href="partnership-pathways.html">Partnership Pathways</a>
+          <a href="faq.html">Frequently Asked Questions</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Programs <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">Tools &amp; Resources <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="legacy-insights.html">Legacy Insights, Tools &amp; Resources</a>
+          <a href="legacy-assessment.html">Legacy Assessment</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="nav-item-trigger">IRL Advisors <span class="nav-arrow">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <a href="irl-advisor.html">IRL Advisor</a>
+          <a href="founding-circle.html">Founding Circle</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="contact.html">Contact</a></li>
+      <li class="nav-item"><a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener" class="nav-cta-link">Take Your Legacy Snapshot</a></li>
+    </ul>
+  </nav>
+
+  <div class="nav-mobile-overlay" id="mobile-menu">
+    <a href="index.html"                onclick="closeMobile()">Home</a>
+    <a href="about.html"                onclick="closeMobile()">About Us</a>
+    <a href="founder-letter.html"       onclick="closeMobile()">Letter from Our Founder</a>
+    <a href="partnership-pathways.html" onclick="closeMobile()">Partnership Pathways</a>
+    <a href="faq.html"                  onclick="closeMobile()">FAQ</a>
+    <a href="contact.html"              onclick="closeMobile()">Contact</a>
+    <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" class="mobile-cta">Take Your Legacy Snapshot →</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-inner">
+      <p class="eyebrow reveal">Common Questions</p>
+      <h1 class="reveal reveal-delay-1">Frequently Asked Questions</h1>
+      <p class="page-header-sub reveal reveal-delay-2">
+        Answers to the questions families, advisors, and funders ask most often about IRL and its work.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background: var(--white);">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.5rem;">About IRL</p>
+
+      <div class="faq-list reveal reveal-delay-1">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Is IRL estate planning or financial advising?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. IRL is not a financial advisory firm, estate planning service, or legal practice. We build the relational and governance infrastructure that sits alongside — and often makes more effective — the financial and legal planning families already have. Think of us as the operating system, not the assets.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Who is IRL built for?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>IRL is built for mission-oriented families — especially Black families navigating generational wealth, family businesses, and legacy. We work with families at all stages of wealth and complexity, as long as they're serious about what they want to build and pass on.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What is the Legacy Snapshot?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>The Legacy Snapshot is a free 15-minute diagnostic that assesses your family's existing infrastructure across key dimensions — values, governance, wealth, relationships, and continuity. You'll receive a personalized breakdown and a clear starting point for your family's legacy work.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Is IRL only for wealthy families?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. While IRL works with high-net-worth families, legacy infrastructure is relevant to any family with something to preserve — whether that's wealth, a business, cultural identity, or a set of values. The While We're Still Here™ nonprofit arm specifically exists to bring these tools to communities with less financial access.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How is IRL different from family therapy or counseling?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>IRL is not therapy. We don't process trauma or provide clinical mental health services. We build governance systems — shared documents, structured processes, and frameworks for how a family operates together. We work best alongside therapists, not instead of them.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How do I get started?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>The best first step is the Legacy Snapshot — it's free, takes 15 minutes, and gives you a clear picture of where your family stands. From there, our team will reach out to discuss what comes next based on your results.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="page-section-full">
+    <div class="page-section" style="text-align: center; max-width: 580px; margin: 0 auto;">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 1rem;">Still have questions?</p>
+      <h2 class="reveal reveal-delay-1">We're easy to reach.</h2>
+      <p class="reveal reveal-delay-2" style="margin: 0 auto 2rem; color: rgba(5,45,63,0.65);">Send us a message and we'll respond within 3–5 business days.</p>
+      <a href="contact.html" class="btn btn-clay reveal reveal-delay-3" style="font-size: 1rem; padding: 1rem 2.5rem;">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-logo">In the Room with Legacy™</a>
+        <p class="footer-tagline">"The family is the first institution."</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X / Twitter">X</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">About</p>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="founder-letter.html">Letter from Our Founder</a></li>
+          <li><a href="partnership-pathways.html">Partnership Pathways</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Advisory</p>
+        <ul>
+          <li><a href="irl-advisor.html">IRL Advisors</a></li>
+          <li><a href="founding-circle.html">Founding Circle</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-head">Platform</p>
+        <ul>
+          <li><a href="legacy-insights.html">Legacy Insights</a></li>
+          <li><a href="legacy-assessment.html">Legacy Assessment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 In the Room with Legacy Inc. All rights reserved.</p>
+      <p class="footer-ein">EIN 99-4135483<br>While We're Still Here™ is a registered nonprofit initiative</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('nav').classList.add('scrolled');
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(item => { item.querySelector('.nav-item-trigger').addEventListener('click', (e) => { e.stopPropagation(); const isOpen = item.classList.contains('open'); document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open')); if (!isOpen) item.classList.add('open'); }); });
+    document.addEventListener('click', () => document.querySelectorAll('.nav-item.has-dropdown').forEach(i => i.classList.remove('open')));
+    const hamburger = document.getElementById('hamburger'); const mobileMenu = document.getElementById('mobile-menu');
+    function closeMobile() { hamburger.classList.remove('active'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+    hamburger.addEventListener('click', () => { const open = mobileMenu.classList.contains('open'); open ? closeMobile() : (hamburger.classList.add('active'), mobileMenu.classList.add('open'), document.body.style.overflow = 'hidden'); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>
