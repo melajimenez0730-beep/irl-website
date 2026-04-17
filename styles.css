@@ -209,14 +209,14 @@ img { display: block; max-width: 100%; }
 
 /* Dropdown arrow icon in nav links */
 .nav-arrow {
-  font-size: 0.9rem;
+  width: 10px;
+  height: 6px;
+  flex-shrink: 0;
   opacity: 0.6;
   display: inline-block;
+  vertical-align: middle;
   transition: transform 0.2s;
-  position: relative;
-  top: -5px;
 }
-.nav-links a:hover .nav-arrow { transform: translateY(1px); }
 
 /* CTA pill in nav */
 .nav-links .nav-cta-link {
@@ -301,7 +301,7 @@ img { display: block; max-width: 100%; }
 }
 
 /* Rotate arrow when dropdown is open */
-.nav-item.open .nav-arrow { transform: translateY(-5px) rotate(180deg); }
+.nav-item.open .nav-arrow { transform: rotate(180deg); opacity: 1; }
 
 /* Hamburger — hidden on desktop, shown on mobile */
 .hamburger {
