@@ -591,28 +591,24 @@
       setTimeout(() => { isSnapping = false; }, 950);
     }
 
-    // Mouse wheel — intercept and snap
+    // Only enable snap scroll on desktop (768px+)
+    const isDesktop = () => window.innerWidth > 768;
+
+    // Mouse wheel — intercept and snap (desktop only)
     window.addEventListener('wheel', (e) => {
+      if (!isDesktop()) return;
       e.preventDefault();
       if (isSnapping) return;
       activeIndex = getNearestIndex();
       goToSection(activeIndex + (e.deltaY > 0 ? 1 : -1));
     }, { passive: false });
 
-    // Touch swipe — up or down
-    let touchY = 0;
-    window.addEventListener('touchstart', (e) => {
-      touchY = e.touches[0].clientY;
-    }, { passive: true });
-    window.addEventListener('touchend', (e) => {
-      const diff = touchY - e.changedTouches[0].clientY;
-      if (Math.abs(diff) < 40) return;       // ignore tiny taps
-      activeIndex = getNearestIndex();
-      goToSection(activeIndex + (diff > 0 ? 1 : -1));
-    }, { passive: true });
+    // Touch swipe — mobile scrolls naturally, no snap
+    // (removed touch snap so mobile feels native)
 
-    // Keyboard arrow keys
+    // Keyboard arrow keys (desktop only)
     window.addEventListener('keydown', (e) => {
+      if (!isDesktop()) return;
       if (e.key === 'ArrowDown' || e.key === 'PageDown') {
         e.preventDefault();
         activeIndex = getNearestIndex();

@@ -1619,6 +1619,22 @@ footer {
   .doors-grid   { grid-template-columns: 1fr; }
   .phases-track { grid-template-columns: 1fr; }
   .stat-row     { grid-template-columns: 1fr; }
+  .who-grid     { grid-template-columns: 1fr 1fr; }
+
+  /* Door cards smaller padding on mobile */
+  .door-card { padding: 2rem 1.5rem 2rem; }
+
+  /* Doors subtitle */
+  .doors-sub { font-size: 0.95rem; }
+
+  /* Who cards */
+  .who-card { padding: 1.25rem 1rem; }
+  .who-card h3 { font-size: 1rem; }
+
+  /* Origin section — stack photo below text */
+  .origin-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .origin-photo { aspect-ratio: 4/3; }
+  .origin-photo-wrap::after { display: none; }
 
   /* Stack snapshot checks vertically */
   .snapshot-checks { gap: 1rem; flex-direction: column; align-items: center; }
@@ -1630,4 +1646,38 @@ footer {
   .footer-grid   { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .footer-ein    { text-align: left; }
+
+  /* Inner page sections */
+  .page-header       { padding: 8rem 1.5rem 4rem; min-height: auto; }
+  .page-section      { padding: 3.5rem 1.5rem; }
+  .page-section-full { padding: 3.5rem 1.5rem; }
+  .inner-card-grid   { grid-template-columns: 1fr; }
+  .contact-grid      { grid-template-columns: 1fr; gap: 3rem; }
+
+  /* Nonprofit band (about page) */
+  .nonprofit-band { padding: 3rem 1.5rem; }
+  .nonprofit-band-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+  /* CTA band (about page) */
+  .cta-band { padding: 4rem 1.5rem; }
+
+  /* Founder grid (about page) */
+  .founder-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .founder-photo { aspect-ratio: 4/3; }
+
+  /* Mission/Vision grid */
+  .mv-grid { grid-template-columns: 1fr; }
+
+  /* Practice areas */
+  .practice-item { grid-template-columns: 1fr; gap: 0.75rem; }
+
+  /* Pathways grid (about page) */
+  .pathways-grid { grid-template-columns: 1fr; }
+
+  /* Pillars grid */
+  .pillars-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Partnership pathways */
+  .pp-grid { grid-template-columns: 1fr; }
+  .pp-cta  { padding: 4rem 1.5rem; }
 }
