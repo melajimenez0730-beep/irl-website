@@ -9,6 +9,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
+
+    /* ── Scrolling Ticker ─────────────────────────────── */
+    .ticker-band {
+      background: var(--dusk);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem 0;
+      overflow: hidden;
+    }
+    .ticker-wrap {
+      display: flex;
+      width: max-content;
+      animation: ticker-scroll 30s linear infinite;
+    }
+    .ticker-wrap:hover { animation-play-state: paused; }
+    .ticker-inner {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 2.5rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .ticker-item::after {
+      content: '✦';
+      color: var(--clay);
+      font-size: 0.55rem;
+      opacity: 0.8;
+    }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
     /* ── What Is section ──────────────────────────────── */
     .wwsh-intro-grid {
       display: grid;
@@ -16,41 +60,44 @@
       gap: 5rem;
       align-items: start;
     }
-    .wwsh-intro-grid h2 {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      color: var(--dusk);
-      line-height: 1.1;
-      margin-bottom: 1.25rem;
-    }
-    .wwsh-intro-grid p {
+    .wwsh-intro-text p {
       font-size: 1rem;
       color: rgba(5,45,63,0.68);
       line-height: 1.9;
       margin-bottom: 1.25rem;
     }
-    .wwsh-benefits {
+    .wwsh-intro-text .pull-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: rgba(5,45,63,0.5);
+      border-left: 3px solid var(--clay);
+      padding-left: 1.25rem;
+      line-height: 1.6;
+      margin-top: 1.5rem;
+    }
+    .why-cards {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
-    .wwsh-benefit {
-      padding: 1.5rem 1.75rem;
+    .why-card {
       background: var(--parchment);
       border-radius: 8px;
+      padding: 1.5rem 1.75rem;
       border-left: 3px solid var(--clay);
     }
-    .wwsh-benefit h4 {
+    .why-card h4 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.2rem;
       font-weight: 600;
       color: var(--dusk);
       margin-bottom: 0.4rem;
     }
-    .wwsh-benefit p {
+    .why-card p {
       font-size: 0.9rem;
       color: rgba(5,45,63,0.65);
       line-height: 1.7;
-      margin: 0;
     }
 
     /* ── Five Phases ──────────────────────────────────── */
@@ -67,20 +114,17 @@
       line-height: 1.1;
       margin-bottom: 0.75rem;
     }
-    .phases-band .sub {
+    .phases-band .phases-sub {
       font-size: 1rem;
       color: rgba(255,255,255,0.55);
-      max-width: 520px;
+      max-width: 560px;
       line-height: 1.8;
       margin-bottom: 4rem;
     }
     .phases-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      max-width: 760px;
+      max-width: 780px;
     }
-    .phase-item {
+    .phase-row {
       display: grid;
       grid-template-columns: 3rem 1fr;
       gap: 1.75rem;
@@ -88,7 +132,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.07);
       align-items: start;
     }
-    .phase-item:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+    .phase-row:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
     .phase-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.5rem;
@@ -103,7 +147,6 @@
       font-weight: 600;
       color: var(--white);
       margin-bottom: 0.5rem;
-      line-height: 1.2;
     }
     .phase-content p {
       font-size: 0.95rem;
@@ -111,7 +154,44 @@
       line-height: 1.8;
     }
 
-    /* ── Formats ──────────────────────────────────────── */
+    /* ── Gifts ────────────────────────────────────────── */
+    .gifts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2.5rem;
+      max-width: 860px;
+    }
+    .gift-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--stone);
+      border-radius: 6px;
+    }
+    .gift-icon {
+      color: var(--clay);
+      font-size: 0.6rem;
+      margin-top: 0.45rem;
+      flex-shrink: 0;
+    }
+    .gift-item strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--dusk);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .gift-item span {
+      font-size: 0.85rem;
+      color: rgba(5,45,63,0.6);
+      line-height: 1.65;
+    }
+
+    /* ── Format cards ─────────────────────────────────── */
     .formats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -125,41 +205,102 @@
       padding: 2.5rem 2rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.9rem;
     }
     .format-card .eyebrow { color: var(--clay); }
     .format-card h3 {
-      font-size: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
       font-weight: 600;
       color: var(--dusk);
       line-height: 1.15;
     }
-    .format-card p {
+    .format-card .format-desc {
       font-size: 0.92rem;
       color: rgba(5,45,63,0.65);
       line-height: 1.8;
       flex: 1;
     }
+    .format-walkaway {
+      font-size: 0.85rem;
+      color: rgba(5,45,63,0.55);
+      line-height: 1.7;
+      font-style: italic;
+      padding: 0.85rem 1rem;
+      background: var(--parchment);
+      border-radius: 4px;
+    }
+    .format-perfect {
+      padding-top: 0.5rem;
+    }
+    .format-perfect-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(5,45,63,0.38);
+      margin-bottom: 0.6rem;
+    }
+    .format-perfect ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .format-perfect ul li {
+      font-size: 0.85rem;
+      color: rgba(5,45,63,0.62);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .format-perfect ul li::before {
+      content: '—';
+      color: var(--clay);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
     .format-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 600;
       color: var(--clay);
       padding-top: 0.75rem;
       border-top: 1px solid var(--stone);
     }
-
-    /* ── Is This For You ──────────────────────────────── */
-    .for-you-band {
-      background: var(--parchment);
-      padding: 6rem 3.5rem;
+    .format-price span {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: rgba(5,45,63,0.4);
+      display: block;
+      margin-top: 0.2rem;
     }
+
+    /* ── Emotional statement ──────────────────────────── */
+    .emotional-band {
+      background: var(--dusk);
+      padding: 5rem 3.5rem;
+      text-align: center;
+    }
+    .emotional-band p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--parchment);
+      line-height: 1.5;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* ── For you grid ─────────────────────────────────── */
     .for-you-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 0.85rem;
       margin-top: 2.5rem;
-      max-width: 860px;
+      max-width: 820px;
     }
     .for-you-item {
       display: flex;
@@ -178,40 +319,99 @@
       flex-shrink: 0;
     }
 
-    /* ── Founder quote ────────────────────────────────── */
-    .founder-quote-band {
+    /* ── Process steps ────────────────────────────────── */
+    .process-track {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .process-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: var(--clay);
+      opacity: 0.45;
+      line-height: 1;
+    }
+    .process-step h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dusk);
+      line-height: 1.2;
+    }
+    .process-step p {
+      font-size: 0.88rem;
+      color: rgba(5,45,63,0.6);
+      line-height: 1.7;
+    }
+
+    /* ── Quote band ───────────────────────────────────── */
+    .quote-band {
       background: var(--dusk);
       padding: 6rem 3.5rem;
       text-align: center;
     }
-    .founder-quote-band blockquote {
+    .quote-band blockquote {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.6rem, 2.8vw, 2.5rem);
       font-weight: 400;
       font-style: italic;
       color: var(--parchment);
       line-height: 1.55;
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto 2rem;
     }
-    .founder-quote-band cite {
+    .quote-band cite {
       font-family: 'Instrument Sans', sans-serif;
       font-size: 0.82rem;
       font-style: normal;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.38);
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── Partnership band ─────────────────────────────── */
+    .partnership-band {
+      background: var(--parchment);
+      padding: 5rem 3.5rem;
+      text-align: center;
+    }
+    .partnership-band h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 600;
+      color: var(--dusk);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .partnership-band p {
+      font-size: 1rem;
+      color: rgba(5,45,63,0.65);
+      max-width: 540px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
     }
 
     @media (max-width: 1024px) {
-      .wwsh-intro-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .formats-grid    { grid-template-columns: 1fr; }
-      .for-you-grid    { grid-template-columns: 1fr; }
+      .wwsh-intro-grid  { grid-template-columns: 1fr; gap: 3rem; }
+      .formats-grid     { grid-template-columns: 1fr; }
+      .process-track    { grid-template-columns: 1fr 1fr; gap: 2rem; }
     }
     @media (max-width: 768px) {
-      .phases-band     { padding: 4rem 1.5rem; }
-      .for-you-band    { padding: 4rem 1.5rem; }
-      .founder-quote-band { padding: 4rem 1.5rem; }
+      .phases-band      { padding: 4rem 1.5rem; }
+      .emotional-band   { padding: 3.5rem 1.5rem; }
+      .quote-band       { padding: 4rem 1.5rem; }
+      .partnership-band { padding: 4rem 1.5rem; }
+      .gifts-grid       { grid-template-columns: 1fr; }
+      .for-you-grid     { grid-template-columns: 1fr; }
+      .process-track    { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -276,12 +476,42 @@
   <section class="page-header">
     <div class="page-header-inner">
       <p class="eyebrow reveal">IRL Flagship Program</p>
-      <h1 class="reveal reveal-delay-1">Because love, legacy,<br>and truth can't wait.</h1>
+      <h1 class="reveal reveal-delay-1">Because love, legacy,<br>and truth can't wait<br><em style="font-weight:300;">until it's too late.</em></h1>
       <p class="page-header-sub reveal reveal-delay-2">
         Guided family conversations that bring peace to life's transitions, preserve your stories, and prepare the next generation — while we're still here.
       </p>
+      <a href="contact.html" class="btn btn-clay reveal reveal-delay-3" style="margin-top: 1.5rem; font-size: 1rem; padding: 1rem 2.25rem;">
+        Request a Family Session
+      </a>
     </div>
   </section>
+
+
+  <!-- ─── SCROLLING TICKER ─────────────────────────────────── -->
+  <div class="ticker-band">
+    <div class="ticker-wrap">
+      <!-- Items duplicated so the loop is seamless -->
+      <div class="ticker-inner">
+        <div class="ticker-item">Preserve Family Stories</div>
+        <div class="ticker-item">Honor Shared Values</div>
+        <div class="ticker-item">Create a Living Legacy</div>
+        <div class="ticker-item">Build Intergenerational Connection</div>
+        <div class="ticker-item">Say What Needs to Be Said</div>
+        <div class="ticker-item">Strengthen Family Bonds</div>
+        <div class="ticker-item">Pass Down Family Wisdom</div>
+        <div class="ticker-item">Document Your Journey</div>
+        <!-- duplicate set -->
+        <div class="ticker-item">Preserve Family Stories</div>
+        <div class="ticker-item">Honor Shared Values</div>
+        <div class="ticker-item">Create a Living Legacy</div>
+        <div class="ticker-item">Build Intergenerational Connection</div>
+        <div class="ticker-item">Say What Needs to Be Said</div>
+        <div class="ticker-item">Strengthen Family Bonds</div>
+        <div class="ticker-item">Pass Down Family Wisdom</div>
+        <div class="ticker-item">Document Your Journey</div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- ─── WHAT IS IT ───────────────────────────────────────── -->
@@ -289,32 +519,40 @@
     <div class="page-section">
       <div class="wwsh-intro-grid">
 
-        <div>
-          <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">What Is While We're Still Here™?</p>
-          <h2 class="reveal reveal-delay-1">Silence is the quiet oppressor in many families.</h2>
+        <div class="wwsh-intro-text">
+          <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">What is While We're Still Here™?</p>
+          <h2 class="reveal reveal-delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); color: var(--dusk); line-height: 1.1; margin-bottom: 1.5rem;">Silence is the quiet oppressor in many families.</h2>
           <p class="reveal reveal-delay-2">
             The topics we avoid are often the ones that matter most. While We're Still Here™ is your invitation to face those conversations now: about values, transitions, love, loss, and what it means to belong.
           </p>
           <p class="reveal reveal-delay-2">
+            Our flagship guided family experience — conversations that matter most, structured and sacred.
+          </p>
+          <p class="reveal reveal-delay-3">
             Through storytelling and guided dialogue, families gain the courage and structure to talk about the things that bring peace, closure, and connection — while we still can.
           </p>
-          <p class="reveal reveal-delay-3" style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: rgba(5,45,63,0.55);">
+          <p class="pull-quote reveal reveal-delay-3">
             Because preparing for tomorrow starts with honest conversation today.
           </p>
         </div>
 
-        <div class="wwsh-benefits">
-          <div class="wwsh-benefit reveal reveal-delay-1">
-            <h4>Have the hard conversations</h4>
-            <p>About health, legacy, and end-of-life care with grace and intention.</p>
-          </div>
-          <div class="wwsh-benefit reveal reveal-delay-2">
-            <h4>Preserve your family's stories</h4>
-            <p>And values for generations to come.</p>
-          </div>
-          <div class="wwsh-benefit reveal reveal-delay-3">
-            <h4>Find peace now, not later</h4>
-            <p>These conversations aren't just about loss. They're about love, living legacy, and leaving nothing unsaid.</p>
+        <div>
+          <p style="font-size: 1rem; color: rgba(5,45,63,0.65); line-height: 1.85; margin-bottom: 1.75rem;" class="reveal reveal-delay-1">
+            Every family carries stories, wisdom, and lessons — but too often, those truths only surface after someone is gone. This experience helps you:
+          </p>
+          <div class="why-cards">
+            <div class="why-card reveal reveal-delay-2">
+              <h4>Have the hard conversations</h4>
+              <p>About health, legacy, and end-of-life care with grace and intention.</p>
+            </div>
+            <div class="why-card reveal reveal-delay-3">
+              <h4>Preserve your family's stories</h4>
+              <p>And values for generations to come.</p>
+            </div>
+            <div class="why-card reveal reveal-delay-4">
+              <h4>Find peace now, not later</h4>
+              <p>These conversations aren't just about loss. They're about love, living legacy, and leaving nothing unsaid.</p>
+            </div>
           </div>
         </div>
 
@@ -326,84 +564,169 @@
   <!-- ─── FIVE PHASES ──────────────────────────────────────── -->
   <div class="phases-band">
     <div style="max-width: var(--max-width); margin: 0 auto;">
-      <p class="eyebrow reveal">The Experience</p>
+      <p class="eyebrow reveal">What to Expect</p>
       <h2 class="reveal reveal-delay-1">Five Universal Phases</h2>
-      <p class="sub reveal reveal-delay-2">Each experience is designed to honor truth, deepen connection, and build peace that lasts.</p>
+      <p class="phases-sub reveal reveal-delay-2">
+        Every While We're Still Here™ experience — whether intimate or collective — is guided by five universal phases. Each pillar meets families where they are, from deep-dive retreats to our 90-minute Guided Gatherings.
+      </p>
 
       <div class="phases-list">
-
-        <div class="phase-item reveal">
+        <div class="phase-row reveal">
           <div class="phase-num">I</div>
           <div class="phase-content">
             <h3>Gather</h3>
             <p>Create a safe, sacred space for honest conversation — whether it's one family in a living room or many families joining virtually.</p>
           </div>
         </div>
-
-        <div class="phase-item reveal reveal-delay-1">
+        <div class="phase-row reveal reveal-delay-1">
           <div class="phase-num">II</div>
           <div class="phase-content">
             <h3>Share</h3>
             <p>Speak what often goes unsaid. Families exchange stories, dream together, voice hopes and fears, and share wishes for how they want to live, love, and transition.</p>
           </div>
         </div>
-
-        <div class="phase-item reveal reveal-delay-2">
+        <div class="phase-row reveal reveal-delay-2">
           <div class="phase-num">III</div>
           <div class="phase-content">
             <h3>Align</h3>
             <p>Find clarity around values, health wishes, estate hopes, and relational intentions — ensuring everyone understands what truly matters most.</p>
           </div>
         </div>
-
-        <div class="phase-item reveal reveal-delay-3">
+        <div class="phase-row reveal reveal-delay-3">
           <div class="phase-num">IV</div>
           <div class="phase-content">
             <h3>Preserve</h3>
             <p>Capture the moment. Families receive guided frameworks, recordings, and tangible resources to document and carry forward what was shared.</p>
           </div>
         </div>
-
-        <div class="phase-item reveal reveal-delay-4">
+        <div class="phase-row reveal reveal-delay-4">
           <div class="phase-num">V</div>
           <div class="phase-content">
             <h3>Integrate</h3>
-            <p>Turn intention into continuity — with next steps, rituals, and plans that strengthen family connection beyond the session itself.</p>
+            <p>Turn intention into continuity — with next steps, rituals, and plans that strengthen family connection beyond the session itself. Each experience is designed to honor truth, deepen connection, and build peace that lasts.</p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
+
+
+  <!-- ─── GIFTS YOU LEAVE WITH ─────────────────────────────── -->
+  <section style="background: var(--white);">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">The Gifts You Leave With</p>
+      <h2 class="reveal reveal-delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); color: var(--dusk); line-height: 1.1; max-width: 680px; margin-bottom: 1rem;">
+        More than memories.
+      </h2>
+      <p class="reveal reveal-delay-2" style="font-size: 1rem; color: rgba(5,45,63,0.65); line-height: 1.85; max-width: 640px;">
+        Every While We're Still Here™ experience leaves families with more than memories. You'll walk away with tangible keepsakes, new understanding, and practical tools that preserve your legacy and strengthen your bonds long after the conversation ends.
+      </p>
+
+      <p style="font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(5,45,63,0.38); margin: 2.5rem 0 0;" class="reveal">You'll leave with:</p>
+
+      <div class="gifts-grid">
+        <div class="gift-item reveal reveal-delay-1">
+          <span class="gift-icon">✦</span>
+          <div><strong>Preserved stories and memories</strong><span>Captured from elders and loved ones to carry forward.</span></div>
+        </div>
+        <div class="gift-item reveal reveal-delay-1">
+          <span class="gift-icon">✦</span>
+          <div><strong>Stronger bonds across generations</strong><span>Through honest dialogue and renewed empathy.</span></div>
+        </div>
+        <div class="gift-item reveal reveal-delay-2">
+          <span class="gift-icon">✦</span>
+          <div><strong>Clarity around wishes and values</strong><span>So your family moves forward in alignment and peace.</span></div>
+        </div>
+        <div class="gift-item reveal reveal-delay-2">
+          <span class="gift-icon">✦</span>
+          <div><strong>Tools for health, wealth, and succession conversations</strong><span>Frameworks to help navigate what's next.</span></div>
+        </div>
+        <div class="gift-item reveal reveal-delay-3">
+          <span class="gift-icon">✦</span>
+          <div><strong>A recorded keepsake</strong><span>Professionally captured audio or video to preserve your family's voice and legacy.</span></div>
+        </div>
+        <div class="gift-item reveal reveal-delay-3">
+          <span class="gift-icon">✦</span>
+          <div><strong>A personalized Legacy Guidebook</strong><span>With highlights, insights, and reflection prompts to continue the work at home.</span></div>
+        </div>
+        <div class="gift-item reveal reveal-delay-4" style="grid-column: 1 / -1; max-width: calc(50% - 0.5rem);">
+          <span class="gift-icon">✦</span>
+          <div><strong>Ongoing reflection and integration tools</strong><span>Designed to help families continue building connection and intention after the experience.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- ─── THREE FORMATS ────────────────────────────────────── -->
-  <section style="background: var(--white);">
+  <section style="background: var(--parchment);">
     <div class="page-section">
-      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">Choose Your Format</p>
-      <h2 class="reveal reveal-delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); color: var(--dusk); line-height: 1.1;">Three Program Formats</h2>
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">Three Ways to Experience the Program</p>
+      <h2 class="reveal reveal-delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); color: var(--dusk); line-height: 1.1; margin-bottom: 1rem;">Choose the format that fits your family.</h2>
+      <p class="reveal reveal-delay-2" style="font-size: 1rem; color: rgba(5,45,63,0.65); line-height: 1.85; max-width: 560px;">
+        Choose the format that best suits your family's needs, location, and budget.
+      </p>
 
       <div class="formats-grid">
 
+        <!-- In-Person -->
         <div class="format-card reveal reveal-delay-1">
-          <p class="eyebrow">In-Person</p>
-          <h3>Family Retreat</h3>
-          <p>A full-day immersive experience held in your home or chosen location. Facilitated by founder Lauren Rosa Miller, this retreat brings generations together for storytelling, values alignment, and intentional dialogue that helps families name what matters most and strengthen what will last.</p>
-          <div class="format-price">Starting at $5,000</div>
+          <p class="eyebrow">Our Flagship Experience</p>
+          <h3>In-Person Family Retreat</h3>
+          <p class="format-desc">A full-day immersive experience held in your home or chosen location. Facilitated by founder Lauren Rosa Miller, this retreat brings generations together for storytelling, values alignment, and intentional dialogue that helps families name what matters most and strengthen what will last.</p>
+          <div class="format-walkaway">You'll walk away with a shared sense of peace, clarity around your family's values and wishes, and a recorded keepsake to treasure for generations.</div>
+          <div class="format-perfect">
+            <p class="format-perfect-label">Perfect for</p>
+            <ul>
+              <li>Families navigating transitions</li>
+              <li>Estate &amp; succession planning</li>
+              <li>Those seeking a deeply healing experience</li>
+            </ul>
+          </div>
+          <div class="format-price">
+            Starting at $5,000
+            <span>Inquire for custom experience</span>
+          </div>
+          <a href="contact.html" class="btn btn-clay" style="font-size: 0.85rem; padding: 0.75rem 1.5rem;">Request a Family Session</a>
         </div>
 
+        <!-- Virtual -->
         <div class="format-card reveal reveal-delay-2">
-          <p class="eyebrow">Virtual</p>
-          <h3>Family Experience</h3>
-          <p>A private, three-part virtual series tailored to your family's needs. Each session is personally guided by Lauren Rosa Miller, helping families preserve their stories, align values, and discuss transitions that bring both peace and clarity.</p>
+          <p class="eyebrow">One Family, One Facilitator</p>
+          <h3>Virtual Family Experience</h3>
+          <p class="format-desc">A private, three-part virtual series tailored to your family's needs. Each session is personally guided by Lauren Rosa Miller, helping families preserve their stories, align values, and discuss transitions that bring both peace and clarity.</p>
+          <div class="format-walkaway">Recorded stories, practical frameworks, and renewed understanding across generations — all from the comfort of home.</div>
+          <div class="format-perfect">
+            <p class="format-perfect-label">Perfect for</p>
+            <ul>
+              <li>Families separated by distance</li>
+              <li>Adult children caring for elders</li>
+              <li>Those preparing for milestones</li>
+            </ul>
+          </div>
           <div class="format-price">$1,500 – $3,000</div>
+          <a href="contact.html" class="btn btn-clay" style="font-size: 0.85rem; padding: 0.75rem 1.5rem;">Request a Family Session</a>
         </div>
 
+        <!-- Guided Gathering -->
         <div class="format-card reveal reveal-delay-3">
-          <p class="eyebrow">Community</p>
+          <p class="eyebrow">Mini-Legacy Session (One-to-Many)</p>
           <h3>The Guided Gathering</h3>
-          <p>A 90-minute virtual or in-person collective experience that brings multiple families together for reflection and guided conversation. Led by Lauren Rosa Miller, the Guided Gathering introduces families to the core philosophy of While We're Still Here™ — replacing silence with shared understanding.</p>
-          <div class="format-price">$150 per family <span style="font-size: 0.82rem; font-weight: 400; color: rgba(5,45,63,0.45);">(limited to 12 families)</span></div>
+          <p class="format-desc">A 90-minute virtual or in-person collective experience that brings multiple families together for reflection and guided conversation. Led by Lauren Rosa Miller, the Guided Gathering introduces families to the core philosophy of While We're Still Here™ — replacing silence with shared understanding. Families reflect, listen, and talk through prompts that spark the conversations they've been meaning to have.</p>
+          <div class="format-walkaway">A guided framework, shared reflection moments, and clarity to continue meaningful conversations within your family.</div>
+          <div class="format-perfect">
+            <p class="format-perfect-label">Perfect for</p>
+            <ul>
+              <li>Holiday seasons</li>
+              <li>Reunions</li>
+              <li>Families new to legacy work</li>
+            </ul>
+          </div>
+          <div class="format-price">
+            $150 per family
+            <span>Limited to 12 families per session</span>
+          </div>
+          <a href="contact.html" class="btn btn-clay" style="font-size: 0.85rem; padding: 0.75rem 1.5rem;">Be Notified When Dates Open</a>
         </div>
 
       </div>
@@ -411,57 +734,109 @@
   </section>
 
 
-  <!-- ─── IS THIS FOR YOU ──────────────────────────────────── -->
-  <div class="for-you-band">
-    <div style="max-width: var(--max-width); margin: 0 auto;">
-      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">Who This Is For</p>
-      <h2 class="reveal reveal-delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--dusk); line-height: 1.1; margin-bottom: 0.5rem;">This is for your family if…</h2>
+  <!-- ─── EMOTIONAL STATEMENT ──────────────────────────────── -->
+  <div class="emotional-band">
+    <p class="reveal">"This is not just a program — it's a gift to your family, and to generations not yet born."</p>
+  </div>
+
+
+  <!-- ─── THIS IS FOR YOU ──────────────────────────────────── -->
+  <section style="background: var(--white);">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">Is This Right for You?</p>
+      <h2 class="reveal reveal-delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); color: var(--dusk); line-height: 1.1; margin-bottom: 0.5rem;">This is for your family if…</h2>
 
       <div class="for-you-grid">
-        <div class="for-you-item reveal reveal-delay-1">You want to honor your elders while they're still here</div>
-        <div class="for-you-item reveal reveal-delay-1">You want your children to know where they come from</div>
-        <div class="for-you-item reveal reveal-delay-2">You're navigating family land, a business, or inheritance</div>
-        <div class="for-you-item reveal reveal-delay-2">You want peace of mind knowing your family is aligned</div>
-        <div class="for-you-item reveal reveal-delay-3">You sense stories are going unheard</div>
-        <div class="for-you-item reveal reveal-delay-3">You want clarity for what matters next — health, finances, values, relationships</div>
-        <div class="for-you-item reveal reveal-delay-4">You don't want regrets about things left unsaid</div>
-        <div class="for-you-item reveal reveal-delay-4">You believe love, unity, and preparation are part of your legacy</div>
+        <div class="for-you-item reveal reveal-delay-1">You want to honor your elders while they're still here.</div>
+        <div class="for-you-item reveal reveal-delay-1">You want your children to know where they come from.</div>
+        <div class="for-you-item reveal reveal-delay-2">You're navigating family land, a business, or inheritance.</div>
+        <div class="for-you-item reveal reveal-delay-2">You want peace of mind knowing your family is aligned.</div>
+        <div class="for-you-item reveal reveal-delay-3">You sense stories are going unheard.</div>
+        <div class="for-you-item reveal reveal-delay-3">You want clarity for what matters next — health, finances, values, relationships.</div>
+        <div class="for-you-item reveal reveal-delay-4">You don't want regrets about things left unsaid.</div>
+        <div class="for-you-item reveal reveal-delay-4">You believe love, unity, and preparation are part of your legacy.</div>
+      </div>
+
+      <a href="contact.html" class="btn btn-clay reveal" style="margin-top: 3rem; font-size: 1rem; padding: 1rem 2.5rem;">Begin Your Legacy Journey</a>
+    </div>
+  </section>
+
+
+  <!-- ─── THE PROCESS ──────────────────────────────────────── -->
+  <section style="background: var(--parchment);">
+    <div class="page-section">
+      <p class="eyebrow reveal" style="color: var(--clay); margin-bottom: 0.75rem;">How It Works</p>
+      <h2 class="reveal reveal-delay-1" style="font-size: clamp(2rem, 3.5vw, 3rem); color: var(--dusk); line-height: 1.1; margin-bottom: 1rem;">The Process</h2>
+      <p class="reveal reveal-delay-2" style="font-size: 1rem; color: rgba(5,45,63,0.65); line-height: 1.85; max-width: 640px;">
+        Every While We're Still Here™ experience follows a thoughtfully designed journey that ensures families receive the guidance, support, and resources they need.
+      </p>
+
+      <div class="process-track">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">01</div>
+          <h4>Inquiry &amp; Intake</h4>
+          <p>We learn about your family's structure and goals.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">02</div>
+          <h4>Preparation</h4>
+          <p>Each participant receives a reflection guide and conversation prompts.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-num">03</div>
+          <h4>Facilitation</h4>
+          <p>Lauren leads the experience with compassion, clarity, and ease.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-num">04</div>
+          <h4>Preservation</h4>
+          <p>The conversation is recorded and compiled into your family's keepsake archive.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-5">
+          <div class="process-num">05</div>
+          <h4>Integration</h4>
+          <p>Families receive next-step resources to continue the work at home.</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
 
   <!-- ─── FOUNDER QUOTE ────────────────────────────────────── -->
-  <div class="founder-quote-band">
+  <div class="quote-band">
     <blockquote class="reveal">
       "This experience is about giving families peace and language — to say what needs to be said while everyone is still here to hear it."
     </blockquote>
-    <cite class="reveal reveal-delay-1">— Lauren Rosa Miller, Founder</cite>
+    <cite class="reveal reveal-delay-1">— Lauren Rosa Miller, Founder, In the Room with Legacy</cite>
   </div>
 
 
-  <!-- ─── CTA ──────────────────────────────────────────────── -->
+  <!-- ─── FINAL CTA ─────────────────────────────────────────── -->
   <section style="background: var(--clay); padding: 6rem 3.5rem; text-align: center;">
-    <p class="eyebrow reveal" style="color: rgba(255,255,255,0.65); margin-bottom: 1rem;">Begin Your Journey</p>
-    <h2 class="reveal reveal-delay-1" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 600; color: var(--white); line-height: 1.1; margin-bottom: 1.25rem;">
-      Ready to start the conversation?
+    <h2 class="reveal" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 600; color: var(--white); line-height: 1.1; margin-bottom: 1.25rem;">
+      Begin the conversation<br><em style="font-weight:300;">before it's too late.</em>
     </h2>
-    <p class="reveal reveal-delay-2" style="font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.8;">
-      Take the free Legacy Snapshot to see where your family stands — then we'll discuss which format is right for you.
+    <p class="reveal reveal-delay-1" style="font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.8;">
+      Whether you're ready to request a private session or want to be notified when the next Guided Gathering opens, your legacy starts with one conversation.
     </p>
-    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" rel="noopener"
-         class="btn reveal reveal-delay-3"
-         style="background: var(--white); color: var(--clay); border-color: var(--white); font-size: 1rem; padding: 1rem 2.5rem;">
-        Take the Free Snapshot
-      </a>
-      <a href="contact.html"
-         class="btn btn-ghost-light reveal reveal-delay-3"
-         style="font-size: 1rem; padding: 1rem 2.5rem;">
-        Inquire About a Session
-      </a>
-    </div>
+    <a href="contact.html"
+       class="btn reveal reveal-delay-2"
+       style="background: var(--white); color: var(--clay); border-color: var(--white); font-size: 1rem; padding: 1rem 2.5rem;">
+      Request a Family Session
+    </a>
   </section>
+
+
+  <!-- ─── PARTNERSHIP ───────────────────────────────────────── -->
+  <div class="partnership-band">
+    <h3 class="reveal">Interested in partnering with While We're Still Here™?</h3>
+    <p class="reveal reveal-delay-1">
+      We welcome collaborations with brands, organizations, and institutions aligned with our mission to help families preserve their stories, honor their elders, and prepare the next generation.
+    </p>
+    <a href="partnership-pathways.html" class="btn btn-ghost-dusk reveal reveal-delay-2" style="font-size: 0.95rem; padding: 0.9rem 2rem;">
+      Inquire About Partnership Opportunities
+    </a>
+  </div>
 
 
   <!-- ─── FOOTER ────────────────────────────────────────────── -->
@@ -489,7 +864,7 @@
         <p class="footer-col-head">Programs</p>
         <ul>
           <li><a href="programs.html">All Programs</a></li>
-          <li><a href="while-were-still-here.html">While We're Still Here</a></li>
+          <li><a href="while-were-still-here.html">While We're Still Here™</a></li>
         </ul>
       </div>
       <div class="footer-col">
