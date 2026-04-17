@@ -79,10 +79,12 @@
 
   <!-- Mobile menu overlay -->
   <div class="nav-mobile-overlay" id="mobile-menu">
-    <a href="#advisors" onclick="closeMobile()">IRL Advisors</a>
-    <a href="#program"  onclick="closeMobile()">While We're Still Here™</a>
-    <a href="#origin"   onclick="closeMobile()">About</a>
-    <a href="#snapshot" onclick="closeMobile()" class="mobile-cta">Legacy Snapshot →</a>
+    <a href="about.html"               onclick="closeMobile()">About Us</a>
+    <a href="founder-letter.html"      onclick="closeMobile()">Founder Letter</a>
+    <a href="partnership-pathways.html" onclick="closeMobile()">Partnership Pathways</a>
+    <a href="faq.html"                 onclick="closeMobile()">FAQ</a>
+    <a href="contact.html"             onclick="closeMobile()">Contact</a>
+    <a href="https://form.typeform.com/to/YOUR_LINK" target="_blank" onclick="closeMobile()" class="mobile-cta">Take Your Legacy Snapshot →</a>
   </div>
 
 
@@ -547,6 +549,18 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
     revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ── Program section animation — fires on scroll (mobile) or snap (desktop) */
+    let programAnimFired = false;
+    const programSectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !programAnimFired) {
+          programAnimFired = true;
+          triggerProgramAnim();
+        }
+      });
+    }, { threshold: 0.2 });
+    programSectionObserver.observe(programSection);
 
     /* ── Full Page Snap Scroll (all sections) ───────────────── */
     const snapSections = Array.from(document.querySelectorAll('section, footer'));
